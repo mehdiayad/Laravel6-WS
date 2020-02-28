@@ -17,8 +17,6 @@ class ProductController extends Controller
     public function __construct(ProductRepositoryInterface $productRepositoryInterface)
     {
         $this->productRepositoryInterface = $productRepositoryInterface;
-        //$this->middleware('auth');
-        //$this->middleware('header_data');
     }
     
     /**
@@ -53,7 +51,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {        
-        return $this->index($request);
+
     }
     
     /**

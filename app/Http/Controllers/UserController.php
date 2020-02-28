@@ -4,12 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
-use App\Model\Cart;
-use App\Model\Category;
-use App\Repositories\CartRepository;
-use App\Repositories\CategoryRepository;
 use App\Repositories\UserRepositoryInterface;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -20,8 +15,6 @@ class UserController extends Controller
     public function __construct(UserRepositoryInterface $userRepositoryInterface)
     {
         $this->userRepositoryInterface = $userRepositoryInterface;
-        //$this->middleware('auth');
-        //$this->middleware('header_data');
     }
     
     public function index()
