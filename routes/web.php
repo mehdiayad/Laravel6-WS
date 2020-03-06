@@ -30,3 +30,6 @@ Route::resource('cart', 'CartController');
 Route::resource('address', 'AddressController');
 
 Route::resource('command', 'CommandController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -53,6 +53,7 @@ return array(
     'League\\Event\\' => array($vendorDir . '/league/event/src'),
     'League\\CommonMark\\' => array($vendorDir . '/league/commonmark/src'),
     'Lcobucci\\JWT\\' => array($vendorDir . '/lcobucci/jwt/src'),
+    'Laravel\\Ui\\' => array($vendorDir . '/laravel/ui/src'),
     'Laravel\\Tinker\\' => array($vendorDir . '/laravel/tinker/src'),
     'Laravel\\Passport\\' => array($vendorDir . '/laravel/passport/src'),
     'Laminas\\ZendFrameworkBridge\\' => array($vendorDir . '/laminas/laminas-zendframework-bridge/src'),
