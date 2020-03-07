@@ -3,7 +3,9 @@
 namespace App\Repositories;
 
 use App\Model\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Collection;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -20,7 +22,9 @@ class UserRepository implements UserRepositoryInterface
     {
 
         // display with ORM (pagination)
-         return $this->user::where('active', '=', '1')->paginate($n);
+        // return $this->user::where('active', '=', '1')->paginate($n);
+
+         return $this->user::where('active', '=', '1')->get();
         
         // display with Query builder (pagination)
         // return DB::table('users')->paginate($n);
@@ -69,6 +73,20 @@ class UserRepository implements UserRepositoryInterface
         $user->active = '0';
         $user->save();
 
+    }
+
+    public function loginCheck(Array $inputs)
+    {
+        $email = $inputs['email'];
+        $password = Hash::make($inputs['password']);
+        
+        $response = DB::select('select * from users where email = ? AND password = ?', $email, $password);
+        
+        if($response->count()>0){
+            return true;
+        }else{
+            return false;
+        }
     }
     
 }

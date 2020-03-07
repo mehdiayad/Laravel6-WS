@@ -19,6 +19,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('home/vue', 'HomeController@vue')->name('home.vue');
 
+Route::get('logincheck', 'UserController@loginCheckGet');
+
+Route::post('logincheck', 'UserController@loginCheckPost');
+
 Route::resource('user', 'UserController');
 
 Route::resource('product', 'ProductController');
@@ -30,6 +34,4 @@ Route::resource('cart', 'CartController');
 Route::resource('address', 'AddressController');
 
 Route::resource('command', 'CommandController');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

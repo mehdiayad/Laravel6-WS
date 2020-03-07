@@ -21,13 +21,13 @@ class UserController extends Controller
     {   
         $users = $this->userRepositoryInterface->getPaginate($this->nbrPerPage);
               
-        return view('user_index', ['users' => $users]);
+        return $users;
         
     }
     
     public function create()
     {
-        return view('user_create');
+        //return view('user_create');
     }
     
     public function store(UserCreateRequest $request)
@@ -43,7 +43,7 @@ class UserController extends Controller
     {
         $user = $this->userRepositoryInterface->getById($id);
         
-        return view('user_show', compact('user'));
+        return $user;
     }
     
     public function edit($id)
@@ -70,6 +70,7 @@ class UserController extends Controller
         
         return back();
     }
+
     
     private function setAdmin($request)
     {
@@ -78,6 +79,23 @@ class UserController extends Controller
         if(!$request->has('admin'))
         {
             $request->merge(['admin' => 0]);
+        }
+    }
+
+    public function loginCheckGet()
+    {        
+        return response('Hello World', 200)->header('Content-Type', 'text/plain');
+    }
+    
+    
+    public function loginCheckPost($request)
+    {
+        $bool = $this->userRepositoryInterface->loginCheck($request->all());
+        
+        if($bool){
+            return response()->json(['method' => 'login', 'type' => 'POST','state' => 'success']);
+        }else{
+            return response()->json(['method' => 'login', 'type' => 'POST','state' => 'faillure']);
         }
     }
     
