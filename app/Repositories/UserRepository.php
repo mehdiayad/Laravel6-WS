@@ -77,8 +77,13 @@ class UserRepository implements UserRepositoryInterface
 
     public function loginCheck(Array $inputs)
     {
-        $email = $inputs['email'];
-        $password = Hash::make($inputs['password']);
+        $email = 'test';
+        $password = 'test';
+        
+        if(array_key_exists('email',$inputs) && array_key_exists('password',$inputs)){
+            $email = $inputs['email'];
+            $password = Hash::make($inputs['password']);
+        }
         
         $response = DB::select('select * from users where email = ? AND password = ?', $email, $password);
         

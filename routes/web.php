@@ -19,9 +19,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('home/vue', 'HomeController@vue')->name('home.vue');
 
-Route::get('logincheck', 'UserController@loginCheckGet');
+Route::get('login/api', 'UserController@loginApiGet');
 
-Route::post('logincheck', 'UserController@loginCheckPost');
+Route::post('login/api', 'UserController@loginApiPost');
 
 Route::resource('user', 'UserController');
 
