@@ -35,7 +35,7 @@ class CartController extends Controller
         //Debugbar::info($cart_articles_custom);
         
         // return view
-        return view('cart_index', ['cart_articles_custom' => $cart_articles_custom]);
+        return $cart_articles_custom;
     }
 
     /**
@@ -149,5 +149,11 @@ class CartController extends Controller
         
         return view('cart_confirm',['user_default_billing_address' => $user_default_billing_address, 'user_default_shipping_address' => $user_default_shipping_address, 'cart_articles_custom' => $cart_articles_custom]);
     
+    }
+    
+    public function cartNumber($user_id)
+    {
+        $cart_articles = $this->cartRepositoryInterface->getCartNumberSession($user_id);
+        return $cart_articles;
     }
 }

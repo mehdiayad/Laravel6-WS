@@ -29,6 +29,8 @@ Route::resource('product', 'ProductController');
 
 Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
 
+Route::get('cart/articles/{user_id}','CartController@cartNumber' )->name('card.articles');
+
 Route::resource('cart', 'CartController');
 
 Route::resource('address', 'AddressController');
