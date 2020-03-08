@@ -16,16 +16,9 @@ class CategoryRepository implements CategoryRepositoryInterface
     
     public function getCategories()
     {
-        // WORK
         $categories = DB::table('categories')->where('active', '1')->get();
                         
-        $categories2 = array();
-        
-        foreach ($categories as $category) {
-            $categories2[$category->id] = $category->name;
-        }
-        
-        return $categories2;
+        return $categories;
     }
    
 }

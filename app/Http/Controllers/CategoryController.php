@@ -2,38 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\ProductRepositoryInterface;
+use App\Repositories\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
-//use Debugbar;
 
-
-class ProductController extends Controller
+class CategoryController extends Controller
 {
-    protected $productRepositoryInterface;
-    
-    protected $nbrPerPage = 12;
+    protected $categoryRepositoryInterface;
     
     
-    public function __construct(ProductRepositoryInterface $productRepositoryInterface)
+    public function __construct(CategoryRepositoryInterface $categoryRepositoryInterface)
     {
-        $this->productRepositoryInterface = $productRepositoryInterface;
+        $this->categoryRepositoryInterface = $categoryRepositoryInterface;
     }
-    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {                
-        $products = $this->productRepositoryInterface->getPaginate($this->nbrPerPage);
+    public function index()
+    {
+        $categories = $this->categoryRepositoryInterface->getCategories();
         
-        //return response()->json($products);
-        
-        return $products;                
+        return $categories;
     }
-    
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,8 +33,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,10 +43,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
-
+    {
+        //
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -62,12 +55,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        // get product
-        $product = $this->productRepositoryInterface->getById($id);
-
-        return $product;
+        //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -78,7 +68,7 @@ class ProductController extends Controller
     {
         //
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -90,7 +80,7 @@ class ProductController extends Controller
     {
         //
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -101,7 +91,4 @@ class ProductController extends Controller
     {
         //
     }
-    
-    
-    
 }

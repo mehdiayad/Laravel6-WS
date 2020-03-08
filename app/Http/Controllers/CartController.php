@@ -151,7 +151,7 @@ class CartController extends Controller
     
     }
     
-    public function cartNumber($user_id)
+    public function getCartNumber($user_id)
     {
         $cart_articles = $this->cartRepositoryInterface->getCartNumberSession($user_id);
         return $cart_articles;
