@@ -3,9 +3,7 @@
 namespace App\Repositories;
 
 use App\Model\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Collection;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -76,22 +74,30 @@ class UserRepository implements UserRepositoryInterface
     }
 
     public function loginCheck(Array $inputs)
-    {
-        $email = 'test';
-        $password = 'test';
+    {        
+        $email= $inputs['email'];
+        $password = $inputs['password'];
+        $id = -1;
+        $find = false;
         
-        if(array_key_exists('email',$inputs) && array_key_exists('password',$inputs)){
-            $email = $inputs['email'];
-            $password = Hash::make($inputs['password']);
+        $response = $this->user::where('email', '=', $email)->where('active', '=', '1')->get();
+        
+        if($response->count()>0)
+        {
+            $temp = $response->first();
+            
+            if( Hash::check($password, $temp->password)) 
+            {
+                $id = $temp->id;
+                $find=true;
+            }
         }
         
-        $response = DB::select('select * from users where email = ? AND password = ?', $email, $password);
-        
-        if($response->count()>0){
-            return true;
-        }else{
-            return false;
-        }
+        if($find == true)
+            return array('state' => 'success', 'id' => $id);        
+        else 
+            return array('state' => 'faillure', 'id' => $id);
+            
     }
     
 }

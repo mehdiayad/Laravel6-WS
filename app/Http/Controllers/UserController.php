@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepositoryInterface;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -94,17 +94,9 @@ class UserController extends Controller
     
     public function loginApiPost(Request $request)
     {
-        $response = 'Call Login Post method from API';
+        $response = $this->userRepositoryInterface->loginCheck($request->all());
         
         return response($response, 200);
-        
-        /*$bool = $this->userRepositoryInterface->loginCheck($request->all());
-                
-        if($bool){
-            return response('Auth succeed', 200);
-        }else{
-            return response('Auth failed', 200);
-        }*/
     }
     
 }
