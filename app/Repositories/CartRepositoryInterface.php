@@ -21,7 +21,7 @@ interface CartRepositoryInterface
     
     public function deleteCart($cart_id);  
     
-    public function transformCartArticlesIntoCustomCollection(Collection $cart_articles);
+    public function transformCartArticlesIntoCustomCollection($user_id,Collection $cart_articles);
     
     public function updateCart(Array $inputs, $cart_id);
     

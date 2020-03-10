@@ -75,10 +75,13 @@ class UserRepository implements UserRepositoryInterface
 
     public function loginCheck(Array $inputs)
     {        
+        // variables from request
         $email= $inputs['email'];
         $password = $inputs['password'];
-        $id = -1;
-        $find = false;
+        $name = null;
+        $id = null;
+        $infosconnexion = null;
+        $connected = false;
         
         $response = $this->user::where('email', '=', $email)->where('active', '=', '1')->get();
         
@@ -89,14 +92,21 @@ class UserRepository implements UserRepositoryInterface
             if( Hash::check($password, $temp->password)) 
             {
                 $id = $temp->id;
-                $find=true;
+                $name = $temp->name;
+                $connected=true;
+                $infosconnexion = "Email/Password match succesfully";
+            }
+            else
+            {
+                $infosconnexion = "Password don't match";
             }
         }
+        else
+        {
+            $infosconnexion = "Email don't exist in the database";
+        }
         
-        if($find == true)
-            return array('state' => 'success', 'id' => $id);        
-        else 
-            return array('state' => 'faillure', 'id' => $id);
+        return array('connected' => $connected,'id' => $id,  'email' => $email, 'name' => $name, 'infosconnexion' => $infosconnexion);        
             
     }
     

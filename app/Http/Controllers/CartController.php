@@ -37,6 +37,16 @@ class CartController extends Controller
         // return view
         return $cart_articles_custom;
     }
+    
+    public function index2($user_id)
+    {        
+        // Get all cart referenced to this user
+        $cart_articles = $this->cartRepositoryInterface->getCartByUser($user_id);
+        $cart_articles_custom = $this->cartRepositoryInterface->transformCartArticlesIntoCustomCollection($user_id,$cart_articles);
+        
+        // return view
+        return $cart_articles_custom;
+    }
 
     /**
      * Show the form for creating a new resource.

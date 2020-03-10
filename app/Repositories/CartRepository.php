@@ -104,13 +104,12 @@ class CartRepository implements CartRepositoryInterface
         $cart->save();
     }
 
-    public function transformCartArticlesIntoCustomCollection(Collection $cart_articles)
+    public function transformCartArticlesIntoCustomCollection($user_id, Collection $cart_articles)
     {
         $cart_articles_custom = new Collection();
         
         if(count($cart_articles)>0)
         {
-            $user_id = Auth::user()->id;
             
             foreach ($cart_articles as $cart_article)
             {
@@ -119,7 +118,7 @@ class CartRepository implements CartRepositoryInterface
                 $response = DB::table('carts')
                 ->join('users', 'carts.user_id', '=', "users.id")
                 ->join('products', 'carts.product_id', '=', "products.id")
-                ->select('carts.*', 'users.*', 'products.*', 'carts.id as cart_id', 'carts.price as cart_price')
+                ->select('carts.*', 'carts.id as cart_id','carts.price as cart_price', 'users.id as user_id', 'users.name', 'products.*', 'products.id as product_id')
                 ->where('carts.active', '=', '1')
                 ->where('carts.user_id', '=', $user_id)
                 ->where('carts.product_id', '=', $product_id)

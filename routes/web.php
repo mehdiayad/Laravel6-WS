@@ -25,11 +25,15 @@ Route::post('login/api', 'UserController@loginApiPost');
 
 Route::resource('user', 'UserController');
 
+Route::post('product/index2', 'ProductController@index2');
+
 Route::resource('product', 'ProductController');
 
 Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
 
 Route::get('cart/articles/{user_id}','CartController@getCartNumber' )->name('card.articles');
+
+Route::get('cart/index2/{user_id}', 'CartController@index2');
 
 Route::resource('cart', 'CartController');
 

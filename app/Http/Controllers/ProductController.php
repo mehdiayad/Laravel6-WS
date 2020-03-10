@@ -24,7 +24,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {                
         $products = $this->productRepositoryInterface->getPaginate($this->nbrPerPage);
         
@@ -32,6 +32,51 @@ class ProductController extends Controller
         
         return $products;                
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index2(Request $request)
+    {
+        $products = array();
+        
+        if(isset($request))
+        {
+            $product_name = $request->input(['product']);
+            $category_id = $request->input(['category']);
+                            
+            if(is_null($category_id) && is_null($product_name))
+            {
+                $products = $this->productRepositoryInterface->getPaginate($this->nbrPerPage);
+            }
+            else if (isset($category_id) && is_null($product_name))
+            {
+                $products = $this->productRepositoryInterface->getPaginateCategory($this->nbrPerPage,$category_id);
+                
+            }
+            else if (is_null($category_id) && isset($product_name))
+            {
+                $products = $this->productRepositoryInterface->getPaginateProduct($this->nbrPerPage,$product_name);
+            }
+            else if (isset($product_name) && isset($product_name))
+            {
+                $products = $this->productRepositoryInterface->getPaginateCategoryProduct($this->nbrPerPage,$category_id,$product_name);
+            }
+            else
+            {
+                // nothing
+            }
+        }
+        else
+        {
+            $products = $this->productRepositoryInterface->getPaginate($this->nbrPerPage);
+        }
+        
+        return $products;
+    }
+    
     
     
     /**
