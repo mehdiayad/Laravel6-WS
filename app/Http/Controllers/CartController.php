@@ -14,7 +14,6 @@ class CartController extends Controller
 {
     protected $cartRepositoryInterface;
     
-    
     public function __construct(CartRepositoryInterface $cartRepositoryInterface)
     {
         $this->cartRepositoryInterface = $cartRepositoryInterface;
@@ -38,7 +37,7 @@ class CartController extends Controller
         return $cart_articles_custom;
     }
     
-    public function index2($user_id)
+    public function list($user_id)
     {        
         // Get all cart referenced to this user
         $cart_articles = $this->cartRepositoryInterface->getCartByUser($user_id);

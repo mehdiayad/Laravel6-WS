@@ -34,11 +34,11 @@ class ProductController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a custom listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index2(Request $request)
+    public function list(Request $request)
     {
         $products = array();
         

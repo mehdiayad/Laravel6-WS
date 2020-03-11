@@ -82,21 +82,5 @@ class UserController extends Controller
             $request->merge(['admin' => 0]);
         }
     }
-
-    public function loginApiGet()
-    {        
-        $response = 'Call Login Get method from API';
-                
-        return response($response, 200);
-        
-    }
-    
-    
-    public function loginApiPost(Request $request)
-    {
-        $response = $this->userRepositoryInterface->loginCheck($request->all());
-        
-        return response($response, 200);
-    }
     
 }

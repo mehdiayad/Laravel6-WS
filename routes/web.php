@@ -11,29 +11,34 @@
 |
 */
 
+
+////////////////////////////
+// Additional Ressources  //
+////////////////////////////
+
+Route::post('loginplus', 'Auth\LoginController@loginPlus')->name('loginPlus');
+
+Route::post('product/list', 'ProductController@list')->name('product.list');
+
+Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
+
+Route::get('cart/number/{user_id}','CartController@getCartNumber' )->name('cart.number');
+
+Route::get('cart/list/{user_id}', 'CartController@list')->name('cart.list');
+
+////////////////////////
+// Default Ressources //
+////////////////////////
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('home/vue', 'HomeController@vue')->name('home.vue');
-
-Route::get('login/api', 'UserController@loginApiGet');
-
-Route::post('login/api', 'UserController@loginApiPost');
-
 Route::resource('user', 'UserController');
 
-Route::post('product/index2', 'ProductController@index2');
-
 Route::resource('product', 'ProductController');
-
-Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
-
-Route::get('cart/articles/{user_id}','CartController@getCartNumber' )->name('card.articles');
-
-Route::get('cart/index2/{user_id}', 'CartController@index2');
 
 Route::resource('cart', 'CartController');
 
