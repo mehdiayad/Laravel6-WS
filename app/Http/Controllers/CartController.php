@@ -65,6 +65,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        
         if($request['product_quantity']>0)
         {
             

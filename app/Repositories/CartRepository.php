@@ -37,7 +37,7 @@ class CartRepository implements CartRepositoryInterface
     public function addCart(Array $inputs)
     {
         $cart = new Cart;
-        $cart->user_id = Auth::user()->id;
+        $cart->user_id = $inputs['user_id'];
         $cart->product_id = $inputs['product_id'];
         $cart->product_quantity = $inputs['product_quantity'];
         $cart->price = $inputs['product_quantity']* ((double)$inputs['product_price']);
@@ -48,7 +48,7 @@ class CartRepository implements CartRepositoryInterface
     
     public function cartExist(Array $inputs)
     {
-        $user_id = Auth::user()->id;
+        $user_id = $inputs['user_id'];
         $product_id = (int) $inputs['product_id'];
         
         $res =  $this->getCartByUserAndProduct($user_id, $product_id);
@@ -62,7 +62,7 @@ class CartRepository implements CartRepositoryInterface
     public function setCart(array $inputs)
     {
         // variables
-        $user_id = Auth::user()->id;
+        $user_id = $inputs['user_id'];
         $product_id = $inputs['product_id'];
         $product_quantity = (int) $inputs['product_quantity'];
         $product_price = (double)$inputs['product_price'];
