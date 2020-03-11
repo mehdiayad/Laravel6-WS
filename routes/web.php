@@ -30,7 +30,7 @@ Route::get('cart/list/{user_id}', 'CartController@list')->name('cart.list');
 // Default Ressources //
 ////////////////////////
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/', 'HomeController@index');
 

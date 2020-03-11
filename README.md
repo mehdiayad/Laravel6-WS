@@ -51,8 +51,9 @@
 - Run the command php artisan migrate:install
 - Run the command php artisan migrate:refresh --seed
 - Run the command php artisan serve
-- Open your browser and go to the page http://localhost:8000/
-- You can connect to the app with (email:super@gmail.com / password:super)
+- You should see Laravel development server started: http://localhost:XXXX/ 
+- Open your browser and go to the page http://localhost:XXXX/ 
+- You should see every endpoints details
 
 
 
