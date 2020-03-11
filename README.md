@@ -2,7 +2,10 @@
 
 ## About the project
 
-- Reproduce Amazon website as a training (MVC Architecture)
+- Reproduce Amazon website as a training (Back End Side)
+- RESTFUL API Architecture
+- Communicate with the frontend
+
 
 ## Project Version
 
@@ -18,9 +21,18 @@
 
 - Laravel 6.0
 - PHP : 7.2
-- Lavarel Debugbar (*)
-- Collective HTML (*)
-- Cors (*)
+
+## Project concepts used
+- Authentification
+- Eloquent ORM
+- Query Builder
+- Migrations
+- Seeding
+- Middleware
+- Dependency Injection
+- Hashing
+- Pagination
+- Relationship
 
 ## Project setup
 
@@ -39,17 +51,5 @@
 - Now you are able to use and see the application
 - You can connect to the app with (email:super@gmail.com / password:super)
 
-## Project concepts used
-- Authentification
-- Eloquent ORM
-- Query Builder
-- Migrations
-- Seeding
-- Middleware
-- Dependency Injection
-- Hashing
-- Pagination
-- Relationship 1:N
-- Error Handling
-- Unit testing
+
 
