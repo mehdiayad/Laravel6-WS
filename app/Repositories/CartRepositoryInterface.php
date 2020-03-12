@@ -16,6 +16,8 @@ interface CartRepositoryInterface
     public function setCart(Array $inputs);
     
     public function cartExist(Array $inputs);
+
+    public function cartExistById($id);
         
     public function getCartNumberSession($user_id);
     

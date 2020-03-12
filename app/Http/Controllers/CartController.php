@@ -91,7 +91,7 @@ class CartController extends Controller
             }
         }
 
-        return array('store' => $store,'method' => $method); 
+        return array('isStored' => $store,'method' => $method); 
     }
 
     /**
@@ -125,12 +125,20 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = intval($id);
+        $type = gettype($id);
+        $store = false;
+        
+        //return array('isStored' => $store, 'id' => $id, 'type' => $type); 
+
         if($this->cartRepositoryInterface->cartExist($request->all()))
         {
             $this->cartRepositoryInterface->updateCart($request->all(),$id);
+            $store=true;
+
         }
         
-        return redirect()->back();
+        return array('isStored' => $store, 'id' => $id, 'type' => $type); 
     }
 
     /**
@@ -141,10 +149,18 @@ class CartController extends Controller
      */
     public function destroy($id)
     {        
-        // delete cart
-        $this->cartRepositoryInterface->deleteCart($id);
-        
-        return redirect()->back();
+        $isDeleted= false;
+        $method = 'none';
+
+        if($this->cartRepositoryInterface->cartExistById($id)){
+
+            // delete cart
+            $this->cartRepositoryInterface->deleteCart($id);
+            $isDeleted= true;
+            $method = 'destroy';
+        }
+
+        return array('isDeleted' => $isDeleted,'method' => $method); 
         
     }
     

@@ -49,7 +49,10 @@ class CartRepository implements CartRepositoryInterface
     public function cartExist(Array $inputs)
     {
         $user_id = $inputs['user_id'];
+        $user_id = intval($user_id);
+
         $product_id = (int) $inputs['product_id'];
+        $product_id = intval($product_id);
         
         $res =  $this->getCartByUserAndProduct($user_id, $product_id);
     
@@ -58,6 +61,19 @@ class CartRepository implements CartRepositoryInterface
         else 
             return false;
     }
+
+    public function cartExistById($id)
+    {
+        $id = intval($id);
+        
+        $res =  $this->getCartById($id);
+    
+        if(count($res)>0)
+            return true;
+        else 
+            return false;
+    }
+
     
     public function setCart(array $inputs)
     {
@@ -93,9 +109,9 @@ class CartRepository implements CartRepositoryInterface
         return $cart_articles;
     }
     
-    public function deleteCart($cart_id)
+    public function deleteCart($id)
     {
-        $carts = $this->getCartById($cart_id);
+        $carts = $this->getCartById($id);
                         
         $cart = $carts->first();
         
@@ -148,10 +164,9 @@ class CartRepository implements CartRepositoryInterface
     
     public function updateCart(array $inputs, $cart_id)
     {
-        
         // variables
         $product_quantity = (int) $inputs['product_quantity'];
-        $product_price = (double)$inputs['product_price'];
+        $product_price = (double) $inputs['product_price'];
         
         // get cart
         $carts = $this->getCartById((int)$cart_id);

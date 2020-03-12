@@ -80,7 +80,7 @@ class UserRepository implements UserRepositoryInterface
         $password = $inputs['password'];
         $name = null;
         $id = null;
-        $infosconnexion = null;
+        $informations = null;
         $connected = false;
         
         $response = $this->user::where('email', '=', $email)->where('active', '=', '1')->get();
@@ -94,19 +94,19 @@ class UserRepository implements UserRepositoryInterface
                 $id = $temp->id;
                 $name = $temp->name;
                 $connected=true;
-                $infosconnexion = "Email/Password match succesfully";
+                $informations = "Email/Password match succesfully";
             }
             else
             {
-                $infosconnexion = "Password don't match";
+                $informations = "Password don't match";
             }
         }
         else
         {
-            $infosconnexion = "Email don't exist in the database";
+            $informations = "Email don't exist in the database";
         }
         
-        return array('connected' => $connected,'id' => $id,  'email' => $email, 'name' => $name, 'infosconnexion' => $infosconnexion);        
+        return array('userConnected' => $connected,'userId' => $id,  'userEmail' => $email, 'userName' => $name, 'userInformations' => $informations);        
             
     }
     
