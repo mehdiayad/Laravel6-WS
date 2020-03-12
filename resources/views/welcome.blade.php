@@ -49,7 +49,7 @@
                                     <td>list</td>
                                     <td>Request</td>
                                     <td>POST</td>
-                                    <td>http://localhost:8000/product</td>
+                                    <td>http://localhost:8000/product/list</td>
                                     <td>Display a custom listing of the resource filters by entries </td>
                                     <td>list of resources</td>
                                   </tr>

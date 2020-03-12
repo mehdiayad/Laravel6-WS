@@ -64,27 +64,34 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
+    {        
+        $store = false;
+        $method = 'none';
+
         if($request['product_quantity']>0)
         {
             
             if($this->cartRepositoryInterface->cartExist($request->all()))
             {
                 $this->cartRepositoryInterface->setCart($request->all());
+
+                $store = true;
+
+                $method = 'update';
+
             }
             else
             {
                 $this->cartRepositoryInterface->addCart($request->all());
+
+                $store = true;
+
+                $method = 'add';
+
             }
-            
-            return redirect()->back()->with("ok","Votre produit a bien ete ajoute dans le panier");
         }
-        else 
-        {
-            return redirect()->back();
-        }
-        
+
+        return array('store' => $store,'method' => $method); 
     }
 
     /**
