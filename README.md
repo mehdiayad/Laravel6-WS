@@ -50,11 +50,12 @@
 - update project/config/database.php databases informations with MySQL informations connections (Default & Additionnal)
 - Open the terminal from your project root folder
 - Run the command php artisan migrate:install
-- Run the command php artisan migrate:refresh --seed
+- Run the command php artisan passport:install
+- Run the command php artisan db:seed
 - Run the command php artisan serve
 - You should see Laravel development server started: http://localhost:8000/ 
 - Open your browser and go to the page http://localhost:8000/ 
-- You should see every endpoints details
-
+- You should the login page authentification
+- You can connect to the app with (email:super@gmail.com / password:super)
 
 

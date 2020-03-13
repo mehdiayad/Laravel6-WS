@@ -31,7 +31,7 @@ class AuthController extends Controller
         //return $tab;
 
         try {
-            $response = $http->post(config('services.passport.login_endpoint'), [
+            $response = $http->post( addslashes(config('services.passport.login_endpoint')), [
                 'form_params' => [
                     'grant_type' => 'password',
                     'client_id' => config('services.passport.client_id'),
