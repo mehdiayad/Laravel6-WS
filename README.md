@@ -57,9 +57,5 @@
 - Open your browser and go to the page http://localhost:8000/ 
 - You should the login page authentification
 - You can connect to the app with (email:super@gmail.com / password:super)
-- Create a new client (demo / http://localhost:8000/demo)
-- Go to URL : http://localhost:8000/oauth/authorize?client_id={id}&response_type=code&redirect_uri=http://localhost:8000/demo
-- Clic on Authorize
-- Save code on address bar http://localhost:8000/demo?code={code}
 
 
