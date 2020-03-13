@@ -8,6 +8,7 @@ use App\Repositories\UserRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Model\User;
+use GuzzleHttp\Client;
 
 class LoginController extends Controller
 {
@@ -41,10 +42,5 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function loginPlus(Request $request)
-    {
-        $userRepository = new UserRepository( new User);
-        $response = $userRepository->loginCheck($request->all());
-        return response($response,200);
-    }
+   
 }

@@ -41,28 +41,30 @@ class ProductController extends Controller
     public function list(Request $request)
     {
         $products = array();
+        $pagination = $this->nbrPerPage;
         
         if(isset($request))
         {
             $product_name = $request->input(['product']);
             $category_id = $request->input(['category']);
+            $pagination = $request->input(['pagination']);
                             
             if(is_null($category_id) && is_null($product_name))
             {
-                $products = $this->productRepositoryInterface->getPaginate($this->nbrPerPage);
+                $products = $this->productRepositoryInterface->getPaginate($pagination);
             }
             else if (isset($category_id) && is_null($product_name))
             {
-                $products = $this->productRepositoryInterface->getPaginateCategory($this->nbrPerPage,$category_id);
+                $products = $this->productRepositoryInterface->getPaginateCategory($pagination,$category_id);
                 
             }
             else if (is_null($category_id) && isset($product_name))
             {
-                $products = $this->productRepositoryInterface->getPaginateProduct($this->nbrPerPage,$product_name);
+                $products = $this->productRepositoryInterface->getPaginateProduct($pagination,$product_name);
             }
             else if (isset($product_name) && isset($product_name))
             {
-                $products = $this->productRepositoryInterface->getPaginateCategoryProduct($this->nbrPerPage,$category_id,$product_name);
+                $products = $this->productRepositoryInterface->getPaginateCategoryProduct($pagination,$category_id,$product_name);
             }
             else
             {
@@ -71,7 +73,7 @@ class ProductController extends Controller
         }
         else
         {
-            $products = $this->productRepositoryInterface->getPaginate($this->nbrPerPage);
+            $products = $this->productRepositoryInterface->getPaginate($pagination);
         }
         
         return $products;

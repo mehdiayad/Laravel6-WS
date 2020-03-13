@@ -16,8 +16,6 @@
 // Additional Ressources  //
 ////////////////////////////
 
-Route::post('loginplus', 'Auth\LoginController@loginPlus')->name('loginPlus');
-
 Route::post('product/list', 'ProductController@list')->name('product.list');
 
 Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
@@ -26,11 +24,15 @@ Route::get('cart/number/{user_id}','CartController@getCartNumber' )->name('cart.
 
 Route::get('cart/list/{user_id}', 'CartController@list')->name('cart.list');
 
+Route::post('/loginOne', 'AuthController@loginOne');
+    
+Route::post('/loginTwo', 'AuthController@loginTwo');
+
 ////////////////////////
 // Default Ressources //
 ////////////////////////
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/', 'HomeController@index');
 

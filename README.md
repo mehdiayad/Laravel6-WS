@@ -38,6 +38,7 @@
 
 - install MAMP
 - Open MAMP application
+- you should see MAMP home page on http://localhost:8888/
 - Go to webstart page -> tools -> phpMyAdmin
 - create a database name 'laravel'
 
@@ -51,8 +52,8 @@
 - Run the command php artisan migrate:install
 - Run the command php artisan migrate:refresh --seed
 - Run the command php artisan serve
-- You should see Laravel development server started: http://localhost:XXXX/ 
-- Open your browser and go to the page http://localhost:XXXX/ 
+- You should see Laravel development server started: http://localhost:8000/ 
+- Open your browser and go to the page http://localhost:8000/ 
 - You should see every endpoints details
 
 
