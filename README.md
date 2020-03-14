@@ -42,9 +42,14 @@
 - Go to webstart page -> tools -> phpMyAdmin
 - create a database name 'laravel'
 
+
+
 ## Project setup (Create Project)
 
+- Go to MAMP preferences and set up your web server document root
+- (MAMP -> preferences -> Web Server -> Document Root -> Select (Desktop/Web for example)
 - download the project from github
+- Place the project inside your MAMP Web Server  root folder (Desktop/Web)
 - Come back to MAMP/WAMP webstart page, you should see all MySQL informations connections 
 - update project/.env databases informations with MySQL informations connections  (Default & Additionnal)
 - update project/config/database.php databases informations with MySQL informations connections (Default & Additionnal)
@@ -52,10 +57,7 @@
 - Run the command php artisan migrate:install
 - Run the command php artisan passport:install
 - Run the command php artisan db:seed
-- Run the command php artisan serve
-- You should see Laravel development server started: http://localhost:8000/ 
-- Open your browser and go to the page http://localhost:8000/ 
-- You should the login page authentification
-- You can connect to the app with (email:super@gmail.com / password:super)
-
+- Come back to http://localhost:8888/Laravel-WS/public/
+- You should see the login page authentification
+- You project has been setup successfully
 

@@ -17,7 +17,7 @@ class CartController extends Controller
     public function __construct(CartRepositoryInterface $cartRepositoryInterface)
     {
         //$this->middleware('auth');
-        //$this->middleware('auth:api');
+        $this->middleware('auth:api');
         $this->cartRepositoryInterface = $cartRepositoryInterface;
         
     }
@@ -29,22 +29,20 @@ class CartController extends Controller
      */
     public function index()
     {
+        // variable
+        $user_id = 0;
+        
+        // get data
+        if( Auth::user() != null && Auth::user()->id != null){
+            $user_id = Auth::user()->id;
+        }
+        
         // Get all cart referenced to this user
-        $cart_articles = $this->cartRepositoryInterface->getCartByUser(Auth::user()->id);        
-        $cart_articles_custom = $this->cartRepositoryInterface->transformCartArticlesIntoCustomCollection($cart_articles);
+        $cart_articles = $this->cartRepositoryInterface->getCartByUser($user_id);        
+        $cart_articles_custom = $this->cartRepositoryInterface->transformCartArticlesIntoCustomCollection($user_id,$cart_articles);
                 
         //Debugbar::info($cart_articles);
         //Debugbar::info($cart_articles_custom);
-        
-        // return view
-        return $cart_articles_custom;
-    }
-    
-    public function list($user_id)
-    {        
-        // Get all cart referenced to this user
-        $cart_articles = $this->cartRepositoryInterface->getCartByUser($user_id);
-        $cart_articles_custom = $this->cartRepositoryInterface->transformCartArticlesIntoCustomCollection($user_id,$cart_articles);
         
         // return view
         return $cart_articles_custom;
@@ -187,8 +185,16 @@ class CartController extends Controller
     
     }
     
-    public function getCartNumber($user_id)
+    public function getCartNumber()
     {
+        // variable
+        $user_id = 0;
+        
+        // get data
+        if( Auth::user() != null && Auth::user()->id != null){
+            $user_id = Auth::user()->id;
+        }
+        
         $cart_articles = $this->cartRepositoryInterface->getCartNumberSession($user_id);
         return $cart_articles;
     }

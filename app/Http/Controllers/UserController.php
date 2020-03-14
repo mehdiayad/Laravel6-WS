@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepositoryInterface;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Model\User;
 
 class UserController extends Controller
 {
@@ -16,16 +17,15 @@ class UserController extends Controller
     public function __construct(UserRepositoryInterface $userRepositoryInterface)
     {
         //$this->middleware('auth');
-        //$this->middleware('auth:api');
+        $this->middleware('auth:api');
         $this->userRepositoryInterface = $userRepositoryInterface;
     }
     
     public function index()
     {   
         $users = $this->userRepositoryInterface->getPaginate($this->nbrPerPage);
-              
-        return $users;
         
+        return $users;    
     }
     
     public function create()
@@ -74,6 +74,20 @@ class UserController extends Controller
         return back();
     }
 
+    
+    public function test()
+    {
+        // variable
+        $user = new User();
+        $user->name="test";
+       
+        // get data
+        if( Auth::user() != null && Auth::user()->id != null){
+            $user = Auth::user();
+        }
+        
+        return $user;
+    }
     
     private function setAdmin($request)
     {

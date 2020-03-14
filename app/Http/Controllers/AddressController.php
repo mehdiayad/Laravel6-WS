@@ -14,7 +14,7 @@ class AddressController extends Controller
     public function __construct(AddressRepositoryInterface $addressRepositoryInterface)
     {
         //$this->middleware('auth');
-        //$this->middleware('auth:api');
+        $this->middleware('auth:api');
         $this->addressRepositoryInterface = $addressRepositoryInterface;
     }
     
@@ -25,10 +25,20 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $user_billing_addresses = $this->addressRepositoryInterface->getBillingAddressesByUserId(Auth::user()->id);
-        $user_shipping_addresses = $this->addressRepositoryInterface->getShippingAddressesByUserId(Auth::user()->id);
+        // variable
+        $user_id = 0;
         
-        return view('address_index',['user_billing_addresses' => $user_billing_addresses, 'user_shipping_addresses' => $user_shipping_addresses]);         
+        // get data
+        if( Auth::user() != null && Auth::user()->id != null){
+            $user_id = Auth::user()->id;
+        }
+        
+        $user_billing_addresses = $this->addressRepositoryInterface->getBillingAddressesByUserId($user_id);
+        $user_shipping_addresses = $this->addressRepositoryInterface->getShippingAddressesByUserId($user_id);
+       
+        $addresses = $user_billing_addresses->merge($user_shipping_addresses); 
+        
+        return $addresses;
     }
     
     /**

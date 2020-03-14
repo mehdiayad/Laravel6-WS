@@ -73,6 +73,22 @@ class UserRepository implements UserRepositoryInterface
 
     }
 
+    public function getInformations($email)
+    {
+        $user = null; 
+        $response = $this->user::where('email', '=', $email)->get();
+        
+        if($response->count()>0)
+        {
+            $user = $response->first();
+            
+        }
+        
+        return $user;
+        
+    }
+    
+    
     public function loginCheck(Array $inputs)
     {        
         // variables

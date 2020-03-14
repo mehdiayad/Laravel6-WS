@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function __construct(CategoryRepositoryInterface $categoryRepositoryInterface)
     {
         //$this->middleware('auth');
-        //$this->middleware('auth:api');
+        $this->middleware('auth:api');
         $this->categoryRepositoryInterface = $categoryRepositoryInterface;
 
     }

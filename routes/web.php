@@ -16,17 +16,18 @@
 // Additional Ressources  //
 ////////////////////////////
 
+Route::post('/loginSimple', 'AuthController@loginSimple')->name('loginSimple');
+
+Route::post('/loginPassport', 'AuthController@loginPassport')->name('loginPassport');
+
+Route::get('user/test', 'UserController@test')->name('user.test');
+
 Route::post('product/list', 'ProductController@list')->name('product.list');
 
 Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
 
-Route::get('cart/number/{user_id}','CartController@getCartNumber' )->name('cart.number');
+Route::get('cart/number','CartController@getCartNumber' )->name('cart.number');
 
-Route::get('cart/list/{user_id}', 'CartController@list')->name('cart.list');
-
-Route::post('/loginOne', 'AuthController@loginOne');
-    
-Route::post('/loginTwo', 'AuthController@loginTwo');
 
 ////////////////////////
 // Default Ressources //

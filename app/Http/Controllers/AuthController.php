@@ -10,20 +10,23 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     
-    public function loginOne(Request $request)
+    public function loginSimple(Request $request)
     {
         $userRepository = new UserRepository( new User);
         $response = $userRepository->loginCheck($request->all());
         return response($response,200);
     }
     
-    public function loginTwo(Request $request)
+    public function loginPassport(Request $request)
     {
-        //TEST
+        //Variables
         $tab = array();
-        $tab['userId'] = 6; // Temp
-        $tab['userName'] = 'superviseur'; // Temp
-        $tab['userEmail'] = $request->username;
+        $userRepository = new UserRepository(new User);
+        
+        $tab['userEmail'] = $request->email;
+        $user = $userRepository->getInformations($request->email);
+        $tab['userId'] = $user->id;
+        $tab['userName'] = $user->name;
         $tab['userConnected'] = false;
         $tab['userInformations'] =  "Connexion via Passport Authentification";
         
@@ -34,7 +37,7 @@ class AuthController extends Controller
                     'grant_type' => 'password',
                     'client_id' => config('services.passport.client_id'),
                     'client_secret' => config('services.passport.client_secret'),
-                    'username' => $request->username,
+                    'username' => $request->email,
                     'password' => $request->password,
                     ]
             ]);
