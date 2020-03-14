@@ -28,7 +28,6 @@ Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
 
 Route::get('cart/number','CartController@getCartNumber' )->name('cart.number');
 
-
 ////////////////////////
 // Default Ressources //
 ////////////////////////
@@ -51,7 +50,3 @@ Route::resource('command', 'CommandController');
 
 Route::resource('category', 'CategoryController');
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
