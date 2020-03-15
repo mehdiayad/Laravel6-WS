@@ -251,6 +251,11 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/nyholm/psr7/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
 	<buildpathentry excluding="src/" kind="src" path="vendor/opis/closure">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
@@ -267,6 +272,11 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry kind="src" path="vendor/phar-io/version/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="vendor/php-http/message-factory/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>

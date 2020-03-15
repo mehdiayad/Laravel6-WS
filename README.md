@@ -21,9 +21,12 @@
 
 - Laravel 6.0
 - PHP : 7.2
+- Passport : 8.4
+- FruitCake : 1.0
 
 ## Project concepts used
-- Authentification
+- Laravel Authentification 
+- Passport Authentification
 - Eloquent ORM
 - Query Builder
 - Migrations
@@ -33,6 +36,7 @@
 - Hashing
 - Pagination
 - Relationship
+- Cors Policy
 
 ## Project setup (Create Database)
 
@@ -55,8 +59,11 @@
 - update project/config/database.php databases informations with MySQL informations connections (Default & Additionnal)
 - Open the terminal from your project root folder
 - Run the command php artisan migrate:install
-- Run the command php artisan passport:install
+- Run the command php artisan migrate
 - Run the command php artisan db:seed
+- Go to the database (http://localhost:8888/phpMyAdmin/index.php)
+- Copy the secret of the Laravel Password Grant Client
+- Paste the secret of the env.file of the project (PASSPORT_CLIENT_SECRET=XXXX)
 - Come back to http://localhost:8888/Laravel-WS/public/
 - You should see the login page authentification
 - You project has been setup successfully
