@@ -17,6 +17,7 @@
 - Server : MAMP / WAMP / XAMPP
 - Browser : Chrome / Mozilla
 
+
 ## Project components version
 
 - Laravel 6.0
