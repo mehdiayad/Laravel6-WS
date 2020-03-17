@@ -60,6 +60,7 @@
 - Open the terminal from your project root folder
 - Run the command php artisan migrate:install
 - Run the command php artisan migrate
+- Run the command php artisan passport:install
 - Run the command php artisan db:seed
 - Go to the database (http://localhost:8888/phpMyAdmin/index.php)
 - Copy the secret of the Laravel Password Grant Client

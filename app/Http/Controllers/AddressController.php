@@ -36,7 +36,8 @@ class AddressController extends Controller
         $user_billing_addresses = $this->addressRepositoryInterface->getBillingAddressesByUserId($user_id);
         $user_shipping_addresses = $this->addressRepositoryInterface->getShippingAddressesByUserId($user_id);
        
-        $addresses = $user_billing_addresses->merge($user_shipping_addresses); 
+        $addresses['billing']= $user_billing_addresses; 
+        $addresses['shipping'] = $user_shipping_addresses;
         
         return $addresses;
     }
