@@ -47,6 +47,7 @@ class CartController extends Controller
         // return view
         return $cart_articles_custom;
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -196,6 +197,24 @@ class CartController extends Controller
         }
         
         $cart_articles = $this->cartRepositoryInterface->getCartNumberSession($user_id);
+        return $cart_articles;
+    }
+    
+    public function getCartProductNumber(Request $request)
+    {
+        // variable
+        $user_id = 0;
+        $product_id = 0;
+        
+        // get data
+        if( Auth::user() != null && Auth::user()->id != null){
+            $user_id = Auth::user()->id;
+        }
+        if($request->product_id != null){
+            $product_id = $request->product_id;
+        }
+        
+        $cart_articles = $this->cartRepositoryInterface->getCartByUserAndProduct($user_id,$product_id);
         return $cart_articles;
     }
 }
