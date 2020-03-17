@@ -36,11 +36,13 @@ class UserRepository implements UserRepositoryInterface
     {
         $user->name = $inputs['name'];
         $user->email = $inputs['email'];
-        $user->login = $inputs['login'];
-        $user->role= $inputs['role'];
-        $user->admin = isset($inputs['admin']);
+        //$user->login = $inputs['login'];
+        //$user->role= $inputs['role'];
+        //$user->admin = isset($inputs['admin']);
         
-        $user->save();
+        $bool = $user->save();
+        
+        return $bool;
     }
     
 
@@ -62,7 +64,9 @@ class UserRepository implements UserRepositoryInterface
     public function update($id, Array $inputs)
     {
         $user = $this->getById($id);
-        $this->save($user, $inputs);
+        $response = $this->save($user, $inputs);
+        return $response;
+        
     }
     
     public function destroy($id)

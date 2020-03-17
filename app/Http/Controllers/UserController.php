@@ -7,6 +7,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Model\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -58,13 +59,14 @@ class UserController extends Controller
         
     }
     
-    public function update(UserUpdateRequest $request, $id)
+    //public function update(UserUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $this->setAdmin($request);
         
-        $this->userRepositoryInterface->update($id, $request->all());
+        $response = $this->userRepositoryInterface->update($id, $request->all());
         
-        return redirect('user')->withOk("L'utilisateur " . $request->input('name') . " a été modifié.");
+        return (String)$response;
     }
     
     public function destroy($id)
