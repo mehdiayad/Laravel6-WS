@@ -22,9 +22,9 @@ class CreateAddressesTable extends Migration
             $table->string('country',20);
             $table->string('postal_code',6);
             $table->string('cell_number',20);
-            $table->char('is_billing',1)->default(0);
-            $table->char('is_shipping',1)->default(0);
-            $table->char('is_default',1)->default(0);
+            $table->boolean('is_billing')->default(false);
+            $table->boolean('is_shipping')->default(false);
+            $table->boolean('is_default')->default(false);
             $table->string('extra_detail',50)->nullable();
             $table->char('active',1)->default(1);
             $table->timestamps();

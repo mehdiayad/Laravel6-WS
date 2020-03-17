@@ -26,7 +26,10 @@ Route::post('product/list', 'ProductController@list')->name('product.list');
 
 Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
 
-Route::get('cart/number','CartController@getCartNumber' )->name('cart.number');
+Route::get('cart/number','CartController@getCartNumber')->name('cart.number');
+
+Route::post('cart/product','CartController@getCartProductNumber' )->name('cart.product');
+
 
 ////////////////////////
 // Default Ressources //

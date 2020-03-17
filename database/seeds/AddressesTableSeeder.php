@@ -20,9 +20,9 @@ class AddressesTableSeeder extends Seeder
             'country' => 'France',
             'postal_code' => '75016',
             'cell_number' => '+33 7 70 70 70 70',
-            'is_billing' => '1',
-            'is_shipping' => '0',
-            'is_default' => '1',
+            'is_billing' => true,
+            'is_shipping' => false,
+            'is_default' => true,
         ]);
         
         DB::table('addresses')->insert([
@@ -33,8 +33,8 @@ class AddressesTableSeeder extends Seeder
             'country' => 'France',
             'postal_code' => '75016',
             'cell_number' => '+33 7 70 70 70 70',
-            'is_billing' => '1',
-            'is_shipping' => '0',
+            'is_billing' => true,
+            'is_shipping' => false,
         ]);
         
         DB::table('addresses')->insert([
@@ -45,9 +45,9 @@ class AddressesTableSeeder extends Seeder
             'country' => 'France',
             'postal_code' => '75008',
             'cell_number' => '+33 7 88 88 88 88',
-            'is_billing' => '0',
-            'is_shipping' => '1',
-            'is_default' => '1',
+            'is_billing' => false,
+            'is_shipping' => true,
+            'is_default' => true,
         ]);
         
         DB::table('addresses')->insert([
@@ -58,8 +58,8 @@ class AddressesTableSeeder extends Seeder
             'country' => 'France',
             'postal_code' => '75009',
             'cell_number' => '+33 7 88 88 88 88',
-            'is_billing' => '0',
-            'is_shipping' => '1',
+            'is_billing' => false,
+            'is_shipping' => true,
         ]);
     
     }
