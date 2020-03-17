@@ -46,6 +46,7 @@ class CartController extends Controller
         
         // return view
         return $cart_articles_custom;
+        
     }
     
 
