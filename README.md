@@ -62,12 +62,13 @@
 - Open the terminal and go to your project directory
 - Run the command [npm install]
 - Run the command [npm run dev]
+- Run the command [composer update]
 - Run the command [php artisan migrate:install]
 - Run the command [php artisan migrate]
 - Run the command [php artisan passport:install]
 - Run the command [php artisan db:seed]
 - Go to the database (http://localhost:8888/phpMyAdmin/index.php)
-- Go to the table ouath_clients
+- Go to the table oauth_clients
 - Copy the secret of the Laravel Password Grant Client
 - Paste the secret of the env.file of the project (PASSPORT_CLIENT_SECRET=XXXX)
 - Come back to http://localhost:8888/Laravel-WS/public/
