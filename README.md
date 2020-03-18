@@ -55,8 +55,8 @@
 - download the project from github
 - Place the project inside your MAMP Web Server  root folder (Desktop/Web)
 - Come back to MAMP/WAMP webstart page, you should see all MySQL informations connections 
-- update project/.env databases informations with MySQL informations connections  (Default & Additionnal)
-- update project/config/database.php databases informations with MySQL informations connections (Default & Additionnal)
+- update project/.env databases informations with MySQL informations connections
+- update project/config/database.php databases informations with MySQL informations connections
 - Delete the folder vendor if exist
 - Delete the folder node_modules if exist
 - Open the terminal and go to your project directory
