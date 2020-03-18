@@ -255,6 +255,7 @@
          * Prepare the component (Vue 1.x).
          */
         ready() {
+        	console.log('mounted');
             this.prepareComponent();
         },
 
@@ -262,6 +263,7 @@
          * Prepare the component (Vue 2.x).
          */
         mounted() {
+        	console.log('mounted');
             this.prepareComponent();
         },
 
@@ -285,6 +287,8 @@
              * Get all of the OAuth clients for the user.
              */
             getClients() {
+            	 
+            	
                 axios.get('/oauth/clients')
                         .then(response => {
                             this.clients = response.data;
