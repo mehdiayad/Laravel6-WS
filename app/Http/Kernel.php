@@ -42,7 +42,11 @@ class Kernel extends HttpKernel
 
         'api' => [
             'throttle:60,1',
-            'auth:api',
+            //\Illuminate\Routing\Middleware\SubstituteBindings::class,
+            //\Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
+            //\Illuminate\Session\Middleware\StartSession::class,
+            
+            
         ],
     ];
 
