@@ -61,6 +61,18 @@ class UserRepository implements UserRepositoryInterface
         return $this->user->findOrFail($id);
     }
     
+    public function getByEmail($email)
+    {
+        $response = $this->user::where('active', '=', '1')->where('email','=',$email)->get();
+        
+        if($response->count()>0){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
     public function update($id, Array $inputs)
     {
         $user = $this->getById($id);
@@ -85,7 +97,6 @@ class UserRepository implements UserRepositoryInterface
         if($response->count()>0)
         {
             $user = $response->first();
-            
         }
         
         return $user;

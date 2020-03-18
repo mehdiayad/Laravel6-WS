@@ -13,8 +13,35 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/loginSimple', 'AuthController@loginSimple')->name('loginSimple');
+
+Route::post('/loginPassport', 'AuthController@loginPassport')->name('loginPassport');
+
+Route::middleware('auth:api')->group(function(){   
+        
+    Route::get('user/test', 'UserController@test')->name('user.test');
+    
+    Route::post('product/list', 'ProductController@list')->name('product.list');
+    
+    Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
+    
+    Route::get('cart/number','CartController@getCartNumber')->name('cart.number');
+    
+    Route::post('cart/product','CartController@getCartProductNumber')->name('cart.product');
+    
+    Route::resource('product', 'ProductController');
+    
+    Route::resource('user', 'UserController');
+    
+    Route::resource('cart', 'CartController');
+    
+    Route::resource('address', 'AddressController');
+    
+    Route::resource('command', 'CommandController');
+    
+    Route::resource('category', 'CategoryController');
+    
 });
 
 
+    

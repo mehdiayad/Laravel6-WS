@@ -13,6 +13,8 @@ interface UserRepositoryInterface
     
     public function getById($id);
     
+    public function getByEmail($email);
+    
     public function update($id, Array $inputs);
     
     public function destroy($id);
