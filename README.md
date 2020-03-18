@@ -70,3 +70,7 @@
 - You should see the login page authentification
 - You project has been setup successfully
 
+## WARNING
+- Because the laravel build-in server in singlethread, if you run this application with php artisan serve, the front API won't be able to connect through this API. You must use a multi-thread server (APACHE or NGINX). This is why we use MAMP server on the project setup with apache built-in server
+
+
