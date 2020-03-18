@@ -73,7 +73,7 @@
 - Paste the secret of the env.file of the project (PASSPORT_CLIENT_SECRET=XXXX)
 - Come back to http://localhost:8888/Laravel-WS/public/
 - You should see the login page authentification
-- You project has been setup successfully
+- You can connect to the app with (email:super@gmail.com / password:super)
 
 ## WARNING
 
