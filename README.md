@@ -57,11 +57,15 @@
 - Come back to MAMP/WAMP webstart page, you should see all MySQL informations connections 
 - update project/.env databases informations with MySQL informations connections  (Default & Additionnal)
 - update project/config/database.php databases informations with MySQL informations connections (Default & Additionnal)
-- Open the terminal from your project root folder
-- Run the command php artisan migrate:install
-- Run the command php artisan migrate
-- Run the command php artisan passport:install
-- Run the command php artisan db:seed
+- Delete the folder vendor if exist
+- Delete the folder node_modules if exist
+- Open the terminal and go to your project directory
+- Run the command [npm install]
+- Run the command [npm run dev]
+- Run the command [php artisan migrate:install]
+- Run the command [php artisan migrate]
+- Run the command [php artisan passport:install]
+- Run the command [php artisan db:seed]
 - Go to the database (http://localhost:8888/phpMyAdmin/index.php)
 - Go to the table ouath_clients
 - Copy the secret of the Laravel Password Grant Client
@@ -71,6 +75,7 @@
 - You project has been setup successfully
 
 ## WARNING
+
 - Because the laravel build-in server in singlethread, if you run this application with php artisan serve, the front API won't be able to connect through this API. You must use a multi-thread server (APACHE or NGINX). This is why we use MAMP server on the project setup with apache built-in server
 
 
