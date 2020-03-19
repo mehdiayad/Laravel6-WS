@@ -82,21 +82,16 @@ class AuthController extends Controller
             $tab['accessToken'] = $dataArray['access_token'];
             $tab['refreshToken'] = $dataArray['refresh_token'];
             $tab['userConnected'] = true;
-            return $tab;
             
             
-        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
             
-            // GENERAL ERROR
             //return response()->json('Something went wrong on the server.', $e->getCode());
-            
-            // CUSTOM ERROR
             $dataJson = $e->getResponse()->getBody();
             $dataArray = json_decode($dataJson, true);
             $tab['errorCode'] = $e->getCode();
             $tab['errorDescription'] = $e->getMessage();
             $tab['errorType'] = $dataArray['error'];
-            return $tab;
         }
         
     }
