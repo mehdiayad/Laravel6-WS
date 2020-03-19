@@ -48,9 +48,7 @@ class AuthController extends Controller
             $user = $userRepository->getInformations($request->email);
             $tab['userId'] = $user->id;
             $tab['userName'] = $user->name;
-            
-            $this->createPasswordGrantAccessToken($request, $tab);
-            
+            $this->getNewPasswordGrantAccessToken($request, $tab);
             
         }else{
             
@@ -63,7 +61,7 @@ class AuthController extends Controller
         
     }
     
-    public function createPasswordGrantAccessToken(Request $request, Array &$tab){
+    public function getNewPasswordGrantAccessToken(Request $request, Array &$tab){
         
         $http = new Client;
         try {
@@ -109,7 +107,7 @@ class AuthController extends Controller
     
     }
     
-    public function getPasswordGrantAccessToken(Request $request, Array &$tab){
+    public function getExistingPasswordGrantAccessToken(Request $request, Array &$tab){
         
         // TO COMPLETE
         
