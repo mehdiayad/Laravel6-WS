@@ -61,7 +61,7 @@ class UserRepository implements UserRepositoryInterface
         return $this->user->findOrFail($id);
     }
     
-    public function getByEmail($email)
+    public function existByEmail($email)
     {
         $response = $this->user::where('active', '=', '1')->where('email','=',$email)->get();
         

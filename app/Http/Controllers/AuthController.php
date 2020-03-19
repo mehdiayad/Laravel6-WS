@@ -25,21 +25,45 @@ class AuthController extends Controller
     public function loginPassport(Request $request)
     {
         
-        //Variables
+        // Variables
         $tab = array();
         $userRepository = new UserRepository(new User);
+        
+        // Initialize
+        $tab['userInformations'] =  "Connexion via Passport Authentification";
         $tab['userEmail'] = $request->email;
         $tab['userConnected'] = false;
-        $tab['userInformations'] =  "Connexion via Passport Authentification";
+        $tab['userId'] = null;
+        $tab['userName'] = null;
+        $tab['errorCode'] = null;
+        $tab['errorDescription'] = null;
+        $tab['errorType'] = null;
+        $tab['tokenType'] = null;
+        $tab['expiresIn'] = null;
+        $tab['accessToken'] = null;
+        $tab['refreshToken'] = null;
         
-        if($userRepository->getByEmail($request->email)){
+        if($userRepository->existByEmail($request->email) == true){
+            
             $user = $userRepository->getInformations($request->email);
             $tab['userId'] = $user->id;
             $tab['userName'] = $user->name;
+            
+            $this->createPasswordGrantAccessToken($request, $tab);
+            
+            
         }else{
-            return $tab;
+            
+            $tab['errorCode'] = 400;
+            $tab['errorType'] = "invalid_email";
+            $tab['errorDescription'] = "Email used doesn't exist in the database";
         }
         
+        return $tab;
+        
+    }
+    
+    public function createPasswordGrantAccessToken(Request $request, Array &$tab){
         
         $http = new Client;
         try {
@@ -50,29 +74,46 @@ class AuthController extends Controller
                     'client_secret' => config('services.passport.client_secret'),
                     'username' => $request->email,
                     'password' => $request->password,
-                    ]
+                ]
             ]);
-            //return $response->getBody();
+            
             $dataJson = $response->getBody();
             $dataArray = json_decode($dataJson, true);
-            $tab['token_type'] = $dataArray['token_type'];
-            $tab['expires_in'] = $dataArray['expires_in'];
-            $tab['access_token'] = $dataArray['access_token'];
-            $tab['refresh_token'] = $dataArray['refresh_token'];
-            $tab['userConnected'] = true;            
+            $tab['tokenType'] = $dataArray['token_type'];
+            $tab['expiresIn'] = $dataArray['expires_in'];
+            $tab['accessToken'] = $dataArray['access_token'];
+            $tab['refreshToken'] = $dataArray['refresh_token'];
+            $tab['userConnected'] = true;
             return $tab;
             
-
             
         } catch (\GuzzleHttp\Exception\BadResponseException $e) {
-            if ($e->getCode() === 400) {
-                return response()->json('Invalid Request. Please enter a username or a password.', $e->getCode());
-            } else if ($e->getCode() === 401) {
-                return response()->json('Your credentials are incorrect. Please try again', $e->getCode());
-            }
             
-            return response()->json('Something went wrong on the server.', $e->getCode());
+            // GENERAL ERROR
+            //return response()->json('Something went wrong on the server.', $e->getCode());
+            
+            // CUSTOM ERROR
+            $dataJson = $e->getResponse()->getBody();
+            $dataArray = json_decode($dataJson, true);
+            $tab['errorCode'] = $e->getCode();
+            $tab['errorDescription'] = $e->getMessage();
+            $tab['errorType'] = $dataArray['error'];
+            return $tab;
         }
+        
     }
+    
+    public function passwordGrantAccessTokenExist(Request $request, Array &$tab){
+        
+      // TO COMPLETE
+    
+    }
+    
+    public function getPasswordGrantAccessToken(Request $request, Array &$tab){
+        
+        // TO COMPLETE
+        
+    }
+        
     
 }
