@@ -3,110 +3,113 @@
 namespace App\Http\Controllers;
 
 use App\Model\User;
+use App\Repositories\AuthRepositoryInterface;
 use App\Repositories\UserRepository;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    protected $authRepositoryInterface;
+    protected $response;
+    protected $limitToken;
     
-    public function __construct()
+    
+    
+    public function __construct(AuthRepositoryInterface $authRepositoryInterface)
     {
-        // N/A
-    }
+        $this->authRepositoryInterface = $authRepositoryInterface;
+        
+        $this->limitToken = 5;
+        
+        // initialize
+        $this->response = array();
+        $this->response['userInformations'] =  "Connexion via Passport Authentification";
+        $this->response['userEmail'] = null;
+        $this->response['userConnected'] = false;
+        $this->response['userId'] = null;
+        $this->response['userName'] = null;
+        $this->response['errorCode'] = null;
+        $this->response['errorDescription'] = null;
+        $this->response['errorType'] = null;
+        $this->response['tokenType'] = null;
+        $this->response['expiresIn'] = null;
+        $this->response['accessToken'] = null;
+        $this->response['refreshToken'] = null;
+        
+    }    
     
-    public function loginSimple(Request $request)
-    {
-        $userRepository = new UserRepository( new User);
-        $response = $userRepository->loginCheck($request->all());
-        return response($response,200);
-    }
-    
-    public function loginPassport(Request $request)
+    public function loginPassportGrantToken(Request $request)
     {
         
-        // Variables
-        $tab = array();
+        //Variables
         $userRepository = new UserRepository(new User);
+        $this->response['userEmail'] = $request->email;
         
-        // Initialize
-        $tab['userInformations'] =  "Connexion via Passport Authentification";
-        $tab['userEmail'] = $request->email;
-        $tab['userConnected'] = false;
-        $tab['userId'] = null;
-        $tab['userName'] = null;
-        $tab['errorCode'] = null;
-        $tab['errorDescription'] = null;
-        $tab['errorType'] = null;
-        $tab['tokenType'] = null;
-        $tab['expiresIn'] = null;
-        $tab['accessToken'] = null;
-        $tab['refreshToken'] = null;
-        
-        if($userRepository->existByEmail($request->email) == true){
-            
+        if($userRepository->existByEmail($request->email)){
+                        
             $user = $userRepository->getInformations($request->email);
-            $tab['userId'] = $user->id;
-            $tab['userName'] = $user->name;
-            $this->getNewPasswordGrantAccessToken($request, $tab);
+            $this->response['userId'] = $user->id;
+            $this->response['userName'] = $user->name;
+                    
+            
+            // Keep max 5 access token for a specific user
+            if($this->authRepositoryInterface->countAccessTokenByUserId($user->id) >= $this->limitToken){
+                
+                $this->authRepositoryInterface->deleteOlderAccessTokenByUserId($user->id, $this->limitToken);
+            }
+            
+                
+            $http = new Client;
+            try {
+                $response = $http->post(config('services.passport.login_endpoint'), [
+                    'form_params' => [
+                        'grant_type' => 'password',
+                        'client_id' => config('services.passport.client_id'),
+                        'client_secret' => config('services.passport.client_secret'),
+                        'username' => $request->email,
+                        'password' => $request->password,
+                    ]
+                ]);
+                
+                $dataJson = $response->getBody();
+                $dataArray = json_decode($dataJson, true);
+                $this->response['tokenType'] = $dataArray['token_type'];
+                $this->response['expiresIn'] = $dataArray['expires_in'];
+                $this->response['accessToken'] = $dataArray['access_token'];
+                $this->response['refreshToken'] = $dataArray['refresh_token'];
+                $this->response['userConnected'] = true;
+                
+                
+            } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+                
+                // GENERAL ERROR
+                //return response()->json('Something went wrong on the server.', $e->getCode());
+                $dataArray = json_decode($e->getResponse()->getBody(), true);
+                $this->response['errorCode'] = $e->getCode();
+                $this->response['errorDescription'] = $e->getMessage();
+                $this->response['errorType'] = $dataArray['error'];
+            }            
             
         }else{
-            
-            $tab['errorCode'] = 400;
-            $tab['errorType'] = "invalid_email";
-            $tab['errorDescription'] = "Email used doesn't exist in the database";
+            // Email not exist break
+            $this->response['errorCode'] = 400;
+            $this->response['errorType'] = "invalid_email";
+            $this->response['errorDescription'] = "Email used doesn't exist in the database";
         }
-        
-        return $tab;
-        
-    }
-    
-    public function getNewPasswordGrantAccessToken(Request $request, Array &$tab){
-        
-        $http = new Client;
-        try {
-            $response = $http->post(config('services.passport.login_endpoint'), [
-                'form_params' => [
-                    'grant_type' => 'password',
-                    'client_id' => config('services.passport.client_id'),
-                    'client_secret' => config('services.passport.client_secret'),
-                    'username' => $request->email,
-                    'password' => $request->password,
-                ]
-            ]);
-            
-            $dataJson = $response->getBody();
-            $dataArray = json_decode($dataJson, true);
-            $tab['tokenType'] = $dataArray['token_type'];
-            $tab['expiresIn'] = $dataArray['expires_in'];
-            $tab['accessToken'] = $dataArray['access_token'];
-            $tab['refreshToken'] = $dataArray['refresh_token'];
-            $tab['userConnected'] = true;
-            
-            
-        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-            
-            //return response()->json('Something went wrong on the server.', $e->getCode());
-            $dataJson = $e->getResponse()->getBody();
-            $dataArray = json_decode($dataJson, true);
-            $tab['errorCode'] = $e->getCode();
-            $tab['errorDescription'] = $e->getMessage();
-            $tab['errorType'] = $dataArray['error'];
-        }
+                
+        return $this->response;
         
     }
     
-    public function passwordGrantAccessTokenExist(Request $request, Array &$tab){
+    public function loginPassportClientToken(Request $request){
         
-      // TO COMPLETE
-    
+        // TODO
     }
     
-    public function getExistingPasswordGrantAccessToken(Request $request, Array &$tab){
+    public function loginPassportPersonalToken(Request $request){
         
-        // TO COMPLETE
-        
+        // TODO
     }
-        
     
 }

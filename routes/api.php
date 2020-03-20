@@ -13,9 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/loginSimple', 'AuthController@loginSimple')->name('loginSimple');
+Route::post('/loginPassportClient', 'AuthController@loginPassportClientToken')->name('loginPassportClient');
 
-Route::post('/loginPassport', 'AuthController@loginPassport')->name('loginPassport');
+Route::post('/loginPassportGrant', 'AuthController@loginPassportGrantToken')->name('loginPassportGrant');
+
+Route::post('/loginPassportPersonal', 'AuthController@loginPassportPersonalToken')->name('loginPassportPersonal');
+
 
 Route::middleware('auth:api')->group(function(){   
         
