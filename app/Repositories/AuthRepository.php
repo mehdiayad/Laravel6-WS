@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Model\OauthAccessToken;
 use App\Model\OauthRefreshToken;
-use Carbon\Carbon;
 
 
 class AuthRepository implements AuthRepositoryInterface
@@ -22,6 +21,7 @@ class AuthRepository implements AuthRepositoryInterface
     
     public function getExistingAccessTokenByUserId($userId){
         
+        // coudn't get token id
         return $this->oauthAccessToken::where('user_id', '=', $userId)->get();
         
     }

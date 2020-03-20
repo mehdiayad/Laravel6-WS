@@ -6,6 +6,7 @@ use App\Model\User;
 use App\Repositories\AuthRepositoryInterface;
 use App\Repositories\UserRepository;
 use GuzzleHttp\Client;
+use GuzzleHttp\TransferStats;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -101,7 +102,31 @@ class AuthController extends Controller
     
     public function loginPassportClientToken(Request $request){
         
-        // TODO
+        
+        //Variables
+        $userRepository = new UserRepository(new User);
+        $this->response['userEmail'] = $request->email;
+        $redirectUri = 'http://example.com/callback';
+        $authorizeUrl='http://localhost:8888/Laravel-WS/public/oauth/authorize?';
+        
+        if($userRepository->existByEmail($request->email)){
+            
+            $user = $userRepository->getInformations($request->email);
+            $this->response['userId'] = $user->id;
+            $this->response['userName'] = $user->name;
+               
+            
+            $authorizeQuery = http_build_query([
+                'response_type' => 'code',
+                'client_id' => 3,
+                'redirect_uri' => $redirectUri
+            ]);
+            
+            $completeUrl = $authorizeUrl.$authorizeQuery;
+            return redirect($completeUrl);
+            
+        }
+        
     }
     
     public function loginPassportPersonalToken(Request $request){
