@@ -29,6 +29,18 @@ class AuthRepository implements AuthRepositoryInterface
         
     }
     
+    public function existOauthClientById($userId){
+        
+        $response =  $this->oauthClient::where('user_id', '=', $userId)->count();
+        
+        if($response>0){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
     public function getOauthClient($userId){
         
         $client = null;
