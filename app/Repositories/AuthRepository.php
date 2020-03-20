@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Model\OauthAccessToken;
+use App\Model\OauthClient;
 use App\Model\OauthRefreshToken;
 
 
@@ -11,12 +12,14 @@ class AuthRepository implements AuthRepositoryInterface
  
     protected $oauthAccessToken;
     protected $oauthRefreshToken;
+    protected $oauthClient;
  
     
-    public function __construct(OauthAccessToken $oauthAccessToken, OauthRefreshToken $oauthRefreshToken)
+    public function __construct(OauthAccessToken $oauthAccessToken, OauthRefreshToken $oauthRefreshToken, OauthClient $oauthClient)
     {
         $this->oauthAccessToken = $oauthAccessToken;
         $this->oauthRefreshToken = $oauthRefreshToken;
+        $this->oauthClient = $oauthClient;
     }
     
     public function getExistingAccessTokenByUserId($userId){
@@ -26,10 +29,22 @@ class AuthRepository implements AuthRepositoryInterface
         
     }
     
+    public function getOauthClient($userId){
+        
+        $client = null;
+        $response =  $this->oauthClient::where('user_id', '=', $userId)->get();
+        
+        if($response->count()>0){
+            $client=$response->first();
+        }
+  
+        return $client;
+        
+    }
+    
     public function countAccessTokenByUserId($userId){
         
         return $this->oauthAccessToken::where('user_id', '=', $userId)->count();
-        
     }
     
     public function deleteOlderAccessTokenByUserId($userId, $limitToken){
