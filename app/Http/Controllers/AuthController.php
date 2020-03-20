@@ -14,13 +14,11 @@ class AuthController extends Controller
     protected $response;
     protected $limitToken;
     
-    
-    
     public function __construct(AuthRepositoryInterface $authRepositoryInterface)
     {
         $this->authRepositoryInterface = $authRepositoryInterface;
         
-        $this->limitToken = 5;
+        $this->limitToken = 6;
         
         // initialize
         $this->response = array();
@@ -52,14 +50,10 @@ class AuthController extends Controller
             $this->response['userId'] = $user->id;
             $this->response['userName'] = $user->name;
                     
-            
-            // Keep max 5 access token for a specific user
             if($this->authRepositoryInterface->countAccessTokenByUserId($user->id) >= $this->limitToken){
-                
                 $this->authRepositoryInterface->deleteOlderAccessTokenByUserId($user->id, $this->limitToken);
             }
             
-                
             $http = new Client;
             try {
                 $response = $http->post(config('services.passport.login_endpoint'), [
