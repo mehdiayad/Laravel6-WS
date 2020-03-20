@@ -36,12 +36,30 @@ class AuthRepository implements AuthRepositoryInterface
         
         $tokens = $this->oauthAccessToken::where('user_id', '=', $userId)->orderBy('created_at', 'asc')->get();
         
-        for($i=0; $i<=$tokens->count()-$limitToken; $i++){
+        for($i=0; $i<=($tokens->count()-$limitToken); $i++){
             
             $token = $tokens->get($i);
             $token->delete();
         }
                             
+    }
+    
+    public function countRefreshTokenByUserId($userId){
+        
+        return $this->oauthRefreshToken::count();
+        
+    }
+    
+    public function deleteOlderRefreshTokenByUserId($userId, $limitToken){
+        
+        $tokens = $this->oauthRefreshToken::orderBy('expires_at', 'asc')->get();
+        
+        for($i=0; $i<=($tokens->count()-$limitToken); $i++){
+            
+            $token = $tokens->get($i);
+            $token->delete();
+        }
+        
     }
     
 }

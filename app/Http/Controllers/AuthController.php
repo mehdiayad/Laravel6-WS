@@ -18,9 +18,8 @@ class AuthController extends Controller
     {
         $this->authRepositoryInterface = $authRepositoryInterface;
         
-        $this->limitToken = 6;
+        $this->limitToken = 5;
         
-        // initialize
         $this->response = array();
         $this->response['userInformations'] =  "Connexion via Passport Authentification";
         $this->response['userEmail'] = null;
@@ -52,6 +51,10 @@ class AuthController extends Controller
                     
             if($this->authRepositoryInterface->countAccessTokenByUserId($user->id) >= $this->limitToken){
                 $this->authRepositoryInterface->deleteOlderAccessTokenByUserId($user->id, $this->limitToken);
+            }
+            
+            if($this->authRepositoryInterface->countRefreshTokenByUserId($user->id) >= $this->limitToken){
+                $this->authRepositoryInterface->deleteOlderRefreshTokenByUserId($user->id, $this->limitToken);
             }
             
             $http = new Client;
