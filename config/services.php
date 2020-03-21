@@ -31,7 +31,10 @@ return [
     ],
 
     'passport' => [
-        'login_endpoint' => env('PASSPORT_LOGIN_ENDPOINT'),
+        
+        'login_endpoint_client' => env('PASSPORT_CLIENT_ENDPOINT'),
+        'login_endpoint_token' => env('PASSPORT_TOKEN_ENDPOINT'),
+        'login_endpoint_authorize' => env('PASSPORT_AUTHORIZE_ENDPOINT'),
         'client_id' => env('PASSPORT_CLIENT_ID'),
         'client_secret' => env('PASSPORT_CLIENT_SECRET'),
         'redirect_uri' => env('PASSEPORT_REDIRECT_URI')

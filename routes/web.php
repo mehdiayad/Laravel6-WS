@@ -23,5 +23,9 @@ Route::middleware('auth')->group(function(){
     
 });
     
+Route::get('/callback', function (Illuminate\Http\Request $request) {
 
+    return  Array('code' => $request->code);
+    
+});
 

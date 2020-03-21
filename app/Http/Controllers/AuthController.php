@@ -60,7 +60,7 @@ class AuthController extends Controller
             $http = new Client;
             
             try {
-                $response = $http->post(config('services.passport.login_endpoint'), [
+                $response = $http->post(config('services.passport.login_endpoint_token'), [
                     'form_params' => [
                         'grant_type' => 'password',
                         'client_id' => config('services.passport.client_id'),
@@ -101,12 +101,12 @@ class AuthController extends Controller
     }
     
     public function loginPassportClientToken(Request $request){
-                
+        
         //Variables
         $userRepository = new UserRepository(new User);
         $this->response['userInformations'] =  "Connexion via Passport Client";
         $this->response['userEmail'] = $request->email;
-        
+        $codeClient = $request->code;
         
         if($userRepository->existByEmail($request->email)){
             
@@ -134,13 +134,13 @@ class AuthController extends Controller
                 
                 try {
                     
-                    $response = $http->post(config('services.passport.login_endpoint'), [
+                    $response = $http->post(config('services.passport.login_endpoint_token'), [
                         'form_params' => [
                             'grant_type' => 'authorization_code',
                             'client_id' => $clientId,
                             'client_secret' => $clientSecret,
                             'redirect_uri' => $clientRedirect,
-                            'code' => $request->code
+                            'code' => $codeClient
                         ]
                     ]);
                     
@@ -167,6 +167,7 @@ class AuthController extends Controller
                 $this->response['errorCode'] = 400;
                 $this->response['errorType'] = "undeclared_user";
                 $this->response['errorDescription'] = "This user exist but not present in the oauth_client database.";
+                    
             }
             
         }else{
@@ -203,7 +204,7 @@ class AuthController extends Controller
             $response = $this->authRepositoryInterface->getOauthClient($user->id);
             
             if($response  != null){
-                $apiUrl="http://localhost:8888/Laravel-WS/public/oauth/authorize?client_id=".$user->id."&redirect_uri=".$response->redirect."&response_type=code";
+                $apiUrl = config('services.passport.login_endpoint_authorize')."?client_id=".$response->id."&redirect_uri=".$response->redirect."&response_type=code";
                 $this->response['apiUrl'] = $apiUrl;
             }else{
                 // User not exist in the oauth client database
