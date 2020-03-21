@@ -189,7 +189,7 @@ class AuthController extends Controller
         $this->response['userInformations'] =  "Connexion via Passport Personal";
         $this->response['errorCode'] = 400;
         $this->response['errorType'] = "undefined_endpoint";
-        $this->response['errorDescription'] = "The server has not configured this endpoint.";
+        $this->response['errorDescription'] = "The server has not configured this endpoint yet.";
         return $this->response;
     }
     
