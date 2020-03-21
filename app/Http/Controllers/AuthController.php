@@ -56,7 +56,7 @@ class AuthController extends Controller
             if($this->authRepositoryInterface->countRefreshTokenByUserId($user->id) >= $this->limitToken){
                 $this->authRepositoryInterface->deleteOlderRefreshTokenByUserId($user->id, $this->limitToken);
             }
-            
+
             $http = new Client;
             
             try {
@@ -131,6 +131,11 @@ class AuthController extends Controller
                 if($this->authRepositoryInterface->countRefreshTokenByUserId($user->id) >= $this->limitToken){
                     $this->authRepositoryInterface->deleteOlderRefreshTokenByUserId($user->id, $this->limitToken);
                 }
+                
+                if($this->authRepositoryInterface->countAuthCodesByUserId($user->id) >= $this->limitToken){
+                    $this->authRepositoryInterface->deleteOlderAuthCodesByUserId($user->id, $this->limitToken);
+                }
+                
                 
                 try {
                     
@@ -212,6 +217,7 @@ class AuthController extends Controller
                 $this->response['errorType'] = "undeclared_user";
                 $this->response['errorDescription'] = "This user exist but not present in the oauth_client database.";
             }
+        
         }else{
             
             // Email not exist in the database
