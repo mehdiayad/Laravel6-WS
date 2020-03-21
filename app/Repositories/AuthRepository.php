@@ -54,6 +54,14 @@ class AuthRepository implements AuthRepositoryInterface
         
     }
     
+    public function getOauthClients(){
+        
+        $response =  $this->oauthClient->get();
+        
+        return $response;
+        
+    }
+    
     public function countAccessTokenByUserId($userId){
         
         return $this->oauthAccessToken::where('user_id', '=', $userId)->count();

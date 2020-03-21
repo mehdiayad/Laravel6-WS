@@ -15,6 +15,9 @@ interface AuthRepositoryInterface
     public function deleteOlderRefreshTokenByUserId($userId, $limitToken);
  
     public function getOauthClient($userId);
+    
+    public function getOauthClients();
+        
         
 }
 

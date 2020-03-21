@@ -14,8 +14,8 @@ class Client extends PassportClient
     public function skipsAuthorization()
     {
         // override default behavior
-        //return $this->firstParty();
-        return true;
+        return $this->firstParty();
+        //return true;
     }
 
 }

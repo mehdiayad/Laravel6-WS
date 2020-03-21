@@ -19,6 +19,8 @@ Route::post('/loginPassportGrant', 'AuthController@loginPassportGrantToken')->na
 
 Route::post('/loginPassportPersonal', 'AuthController@loginPassportPersonalToken')->name('loginPassportPersonal');
 
+Route::post('/generateAuthorizeUrl', 'AuthController@generateAuthorizeUrl');
+
 
 Route::middleware('auth:api')->group(function(){   
         
