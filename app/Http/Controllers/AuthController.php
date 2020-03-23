@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function __construct(AuthRepositoryInterface $authRepositoryInterface)
     {
         $this->authRepositoryInterface = $authRepositoryInterface;
-        $this->limitToken = 3;
+        $this->limitToken = 5;
         
         $this->response = array();
         $this->response['userEmail'] = null;
@@ -37,6 +37,25 @@ class AuthController extends Controller
         $this->response['refreshToken'] = null;
         
     }    
+    
+    public function loginPassportSimple(Request $request){
+        
+        $credentials = $request->only('email', 'password');
+        $this->response['userInformations'] =  "Connexion via Simple Authentification";
+        
+        if (Auth::attempt($credentials)) {
+            $this->response['userConnected'] = true;
+        }else{
+            $this->response['userConnected'] = false;
+            $this->response['errorCode'] = 401;
+            $this->response['errorDescription'] = "The credentials used are incorrects";
+            $this->response['errorType'] = "invalid_authentification";
+        }
+     
+        return $this->response;
+        
+    }
+    
     
     public function loginPassportGrantToken(Request $request)
     {
@@ -240,32 +259,8 @@ class AuthController extends Controller
       
     public function loginPassportTest(Request $request){
                                 
-        $http = new Client;
-        $userToken = $request->clientAccessToken;
-        $tab = array();
         
-        try {
-            
-            $response = $http->get('http://localhost:8888/Laravel-WS/public/api/user/1', [
-                'headers' => [
-                    'Authorization' => 'Bearer '.$userToken,
-                    'Accept' => 'application/json',
-                ],
-            ]);
-            
-            $tab['state'] = 'success';
-            $tab['data'] = $response->getBody()->getContents();
-            return $tab;
-            
-        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-            
-            $tab['state'] = 'error';
-            $tab['errorCode'] = $e->getCode();
-            $tab['errorDescription'] = $e->getMessage();
-            return $tab;
-            
-            
-        }
+            // For tests
                 
     }
     
