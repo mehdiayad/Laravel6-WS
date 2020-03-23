@@ -47,8 +47,8 @@ class ProductController extends Controller
         
         if(isset($request))
         {
-            $product_name = $request->input(['product']);
-            $category_id = $request->input(['category']);
+            $product_name = $request->input(['productSearch']);
+            $category_id = $request->input(['categorySearch']);
             $pagination = $request->input(['pagination']);
             
             if($product_name == "") $product_name = null;
