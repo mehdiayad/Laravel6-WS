@@ -38,7 +38,7 @@ class AuthController extends Controller
         
     }    
     
-    public function loginPassportSimple(Request $request){
+    public function passportAuthSimple(Request $request){
         
         $credentials = $request->only('email', 'password');
         $this->response['userInformations'] =  "Connexion via Simple Authentification";
@@ -57,7 +57,7 @@ class AuthController extends Controller
     }
     
     
-    public function loginPassportGrantToken(Request $request)
+    public function passportAuthGrant(Request $request)
     {
         
         //Variables
@@ -129,7 +129,7 @@ class AuthController extends Controller
         
     }
     
-    public function loginPassportClientToken(Request $request){
+    public function passportAuthClient(Request $request){
         
         //Variables
         $userRepository = new UserRepository(new User);
@@ -223,7 +223,7 @@ class AuthController extends Controller
         
     }
     
-    public function generateAuthorizeUrl(Request $request){
+    public function passportGenerateAuthorizeUrl(Request $request){
         
         $userRepository = new UserRepository(new User);
         $this->response['apiUrl'] = null;
@@ -257,11 +257,9 @@ class AuthController extends Controller
     }
     
       
-    public function loginPassportTest(Request $request){
+    public function passportTestToken(Request $request){
                                 
-        
-            // For tests
-                
+        return response()->json(true);
     }
     
 }

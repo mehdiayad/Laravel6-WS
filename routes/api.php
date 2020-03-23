@@ -13,18 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/loginPassportSimple', 'AuthController@loginPassportSimple')->name('loginPassportSimple');
+Route::post('/passportAuthSimple', 'AuthController@passportAuthSimple')->name('passportAuthSimple');
 
-Route::post('/loginPassportGrant', 'AuthController@loginPassportGrantToken')->name('loginPassportGrant');
+Route::post('/passportAuthGrant', 'AuthController@passportAuthGrant')->name('passportAuthGrant');
 
-Route::post('/loginPassportClient', 'AuthController@loginPassportClientToken')->name('loginPassportClient');
+Route::post('/passportAuthClient', 'AuthController@passportAuthClient')->name('passportAuthClient');
 
-Route::post('/loginPassportGenerateAuthorizeUrl', 'AuthController@generateAuthorizeUrl');
+Route::post('/passportGenerateAuthorizeUrl', 'AuthController@passportGenerateAuthorizeUrl');
 
-Route::post('/loginPassportTest', 'AuthController@loginPassportTest')->name('loginPassportTest');
-
-
-Route::middleware('auth:api')->group(function(){   
+Route::middleware('auth:api')->group(function(){
+    
+    Route::get('/passportTestToken', 'AuthController@passportTestToken');
             
     Route::post('product/list', 'ProductController@list')->name('product.list');
     
