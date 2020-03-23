@@ -17,6 +17,8 @@ interface UserRepositoryInterface
     
     public function destroy($id);
         
+    public function existByEmail($email);
+    
     public function loginCheck(Array $inputs);
     
 }

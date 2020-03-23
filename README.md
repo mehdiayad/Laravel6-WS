@@ -55,18 +55,32 @@
 - download the project from github
 - Place the project inside your MAMP Web Server  root folder (Desktop/Web)
 - Come back to MAMP/WAMP webstart page, you should see all MySQL informations connections 
-- update project/.env databases informations with MySQL informations connections  (Default & Additionnal)
-- update project/config/database.php databases informations with MySQL informations connections (Default & Additionnal)
-- Open the terminal from your project root folder
-- Run the command php artisan migrate:install
-- Run the command php artisan migrate
-- Run the command php artisan passport:install
-- Run the command php artisan db:seed
+- update project/.env databases informations with MySQL informations connections
+- update project/config/database.php databases informations with MySQL informations connections
+- Delete the folder vendor if exist
+- Delete the folder node_modules if exist
+- Open the terminal and go to your project directory
+- Run the command [npm install]
+- Run the command [npm run dev]
+- Run the command [composer update]
+- Run the command [php artisan migrate:install]
+- Run the command [php artisan migrate]
+- Run the command [php artisan passport:install]
+- Run the command [php artisan db:seed]
 - Go to the database (http://localhost:8888/phpMyAdmin/index.php)
-- Go to the table ouath_clients
+- Go to the table oauth_clients
 - Copy the secret of the Laravel Password Grant Client
 - Paste the secret of the env.file of the project (PASSPORT_CLIENT_SECRET=XXXX)
 - Come back to http://localhost:8888/Laravel-WS/public/
 - You should see the login page authentification
-- You project has been setup successfully
+- You can connect to the app with (email:super@gmail.com / password:super)
+- Create a new Client and give a random name
+- You should see a client id associated to the random name you've just given
+- The setup is now completed
+
+
+## WARNING
+
+- Because the laravel build-in server in singlethread, if you run this application with php artisan serve, the front API won't be able to connect through this API. You must use a multi-thread server (APACHE or NGINX). This is why we use MAMP server on the project setup with apache built-in server
+
 

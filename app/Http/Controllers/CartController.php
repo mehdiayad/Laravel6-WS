@@ -17,8 +17,9 @@ class CartController extends Controller
     public function __construct(CartRepositoryInterface $cartRepositoryInterface)
     {
         //$this->middleware('auth');
-        $this->middleware('auth:api');
+        //$this->middleware('auth:api');
         $this->cartRepositoryInterface = $cartRepositoryInterface;
+        
         
     }
     

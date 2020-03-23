@@ -117,7 +117,7 @@
                                 <label class="col-md-3 col-form-label">Redirect URL</label>
 
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="redirect"
+                                    <input type="text" readonly class="form-control" name="redirect"
                                                     @keyup.enter="store" v-model="createForm.redirect">
 
                                     <span class="form-text text-muted">
@@ -239,14 +239,14 @@
                 createForm: {
                     errors: [],
                     name: '',
-                    redirect: '',
+                    redirect: 'http://localhost:8888/Laravel-WS/public/callback',
                     confidential: true
                 },
 
                 editForm: {
                     errors: [],
                     name: '',
-                    redirect: ''
+                    redirect: 'http://localhost:8888/Laravel-WS/public/callback',
                 }
             };
         },
@@ -255,6 +255,7 @@
          * Prepare the component (Vue 1.x).
          */
         ready() {
+        	console.log('mounted');
             this.prepareComponent();
         },
 
@@ -262,6 +263,7 @@
          * Prepare the component (Vue 2.x).
          */
         mounted() {
+        	console.log('mounted');
             this.prepareComponent();
         },
 
@@ -285,6 +287,8 @@
              * Get all of the OAuth clients for the user.
              */
             getClients() {
+            	 
+            	
                 axios.get('/oauth/clients')
                         .then(response => {
                             this.clients = response.data;

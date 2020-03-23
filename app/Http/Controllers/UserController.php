@@ -7,6 +7,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Model\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
     public function __construct(UserRepositoryInterface $userRepositoryInterface)
     {
         //$this->middleware('auth');
-        $this->middleware('auth:api');
+        //$this->middleware('auth:api');
         $this->userRepositoryInterface = $userRepositoryInterface;
     }
     
@@ -58,13 +59,14 @@ class UserController extends Controller
         
     }
     
-    public function update(UserUpdateRequest $request, $id)
+    //public function update(UserUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $this->setAdmin($request);
         
-        $this->userRepositoryInterface->update($id, $request->all());
+        $response = $this->userRepositoryInterface->update($id, $request->all());
         
-        return redirect('user')->withOk("L'utilisateur " . $request->input('name') . " a été modifié.");
+        return (String)$response;
     }
     
     public function destroy($id)
@@ -72,21 +74,6 @@ class UserController extends Controller
         $this->userRepositoryInterface->destroy($id);
         
         return back();
-    }
-
-    
-    public function test()
-    {
-        // variable
-        $user = new User();
-        $user->name="test";
-       
-        // get data
-        if( Auth::user() != null && Auth::user()->id != null){
-            $user = Auth::user();
-        }
-        
-        return $user;
     }
     
     private function setAdmin($request)

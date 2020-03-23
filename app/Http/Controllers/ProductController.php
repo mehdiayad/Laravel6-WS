@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function __construct(ProductRepositoryInterface $productRepositoryInterface)
     {
         //$this->middleware('auth');
-        $this->middleware('auth:api');
+        //$this->middleware('auth:api');
         $this->productRepositoryInterface = $productRepositoryInterface;
     }
     
@@ -50,7 +50,10 @@ class ProductController extends Controller
             $product_name = $request->input(['product']);
             $category_id = $request->input(['category']);
             $pagination = $request->input(['pagination']);
-                            
+            
+            if($product_name == "") $product_name = null;
+            if($category_id == "") $category_id = null;
+            
             if(is_null($category_id) && is_null($product_name))
             {
                 $products = $this->productRepositoryInterface->getPaginate($pagination);

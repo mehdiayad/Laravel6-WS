@@ -43,6 +43,11 @@ class AppServiceProvider extends ServiceProvider
             'App\Repositories\AddressRepositoryInterface',
             'App\Repositories\AddressRepository'
             );
+        
+        $this->app->bind(
+            'App\Repositories\AuthRepositoryInterface',
+            'App\Repositories\AuthRepository'
+            );
     }
 
     /**
