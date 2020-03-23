@@ -22,6 +22,8 @@ interface AuthRepositoryInterface
     
     public function getOauthClients();
         
+    public function getAccessTokens();
+        
         
 }
 

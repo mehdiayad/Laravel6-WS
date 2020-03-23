@@ -20,7 +20,6 @@ Route::middleware('auth')->group(function(){
     
     Route::get('/home', 'HomeController@index')->name('home');
     
-    
 });
     
 Route::get('/callback', function (Illuminate\Http\Request $request) {

@@ -17,15 +17,12 @@ Route::post('/loginPassportClient', 'AuthController@loginPassportClientToken')->
 
 Route::post('/loginPassportGrant', 'AuthController@loginPassportGrantToken')->name('loginPassportGrant');
 
-Route::post('/loginPassportPersonal', 'AuthController@loginPassportPersonalToken')->name('loginPassportPersonal');
+Route::post('/loginPassportGenerateAuthorizeUrl', 'AuthController@generateAuthorizeUrl');
 
-Route::post('/generateAuthorizeUrl', 'AuthController@generateAuthorizeUrl');
-
+Route::post('/loginPassportTest', 'AuthController@loginPassportTest')->name('loginPassportTest');
 
 Route::middleware('auth:api')->group(function(){   
-        
-    Route::get('user/test', 'UserController@test')->name('user.test');
-    
+            
     Route::post('product/list', 'ProductController@list')->name('product.list');
     
     Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');

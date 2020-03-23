@@ -28,6 +28,12 @@ class AuthRepository implements AuthRepositoryInterface
     
 
  
+    public function getAccessTokens(){
+        
+        return $this->oauthAccessToken::get();
+        
+    }
+    
     
     public function getExistingAccessTokenByUserId($userId){
         

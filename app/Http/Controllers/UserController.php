@@ -75,21 +75,6 @@ class UserController extends Controller
         
         return back();
     }
-
-    
-    public function test()
-    {
-        // variable
-        $user = new User();
-        $user->name="test";
-       
-        // get data
-        if( Auth::user() != null && Auth::user()->id != null){
-            $user = Auth::user();
-        }
-        
-        return $user;
-    }
     
     private function setAdmin($request)
     {

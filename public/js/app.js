@@ -2300,13 +2300,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       createForm: {
         errors: [],
         name: '',
-        redirect: '',
+        redirect: 'http://localhost:8888/Laravel-WS/public/callback',
         confidential: true
       },
       editForm: {
         errors: [],
         name: '',
-        redirect: ''
+        redirect: 'http://localhost:8888/Laravel-WS/public/callback'
       }
     };
   },
@@ -39221,7 +39221,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "redirect" },
+                      attrs: { type: "text", readonly: "", name: "redirect" },
                       domProps: { value: _vm.createForm.redirect },
                       on: {
                         keyup: function($event) {

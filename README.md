@@ -74,6 +74,10 @@
 - Come back to http://localhost:8888/Laravel-WS/public/
 - You should see the login page authentification
 - You can connect to the app with (email:super@gmail.com / password:super)
+- Create a new Client and give a random name
+- You should see a client id associated to the random name you've just given
+- The setup is now completed
+
 
 ## WARNING
 

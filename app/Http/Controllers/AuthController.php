@@ -7,6 +7,8 @@ use App\Repositories\AuthRepositoryInterface;
 use App\Repositories\UserRepository;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DateTime;
 
 class AuthController extends Controller
 {
@@ -29,6 +31,8 @@ class AuthController extends Controller
         $this->response['errorType'] = null;
         $this->response['tokenType'] = null;
         $this->response['expiresIn'] = null;
+        $this->response['expiresAt'] = null;
+        $this->response['createdAt'] = null;
         $this->response['accessToken'] = null;
         $this->response['refreshToken'] = null;
         
@@ -71,11 +75,17 @@ class AuthController extends Controller
                 ]);
                 
                 $dataJson = $response->getBody();
-                $dataArray = json_decode($dataJson, true);
+                $dataArray = json_decode($dataJson, true);                
+                
+                $date = new DateTime();
+                $timestamp1 = $date->getTimestamp();
+                $timestamp2 = (string) ((int) $timestamp1 + (int) $dataArray['expires_in']);
+                $this->response['createdAt'] = date("Y/m/d H:i:s",$timestamp1);
+                $this->response['expiresAt'] = date("Y/m/d H:i:s",$timestamp2);
                 $this->response['tokenType'] = $dataArray['token_type'];
-                $this->response['expiresIn'] = $dataArray['expires_in'];
                 $this->response['accessToken'] = $dataArray['access_token'];
                 $this->response['refreshToken'] = $dataArray['refresh_token'];
+                $this->response['expiresIn'] = $dataArray['expires_in'];
                 $this->response['userConnected'] = true;
                 
                 
@@ -136,7 +146,6 @@ class AuthController extends Controller
                     $this->authRepositoryInterface->deleteOlderAuthCodesByUserId($user->id, $this->limitToken);
                 }
                 
-                
                 try {
                     
                     $response = $http->post(config('services.passport.login_endpoint_token'), [
@@ -151,11 +160,18 @@ class AuthController extends Controller
                     
                     $dataJson = $response->getBody();
                     $dataArray = json_decode($dataJson, true);
+                    
+                    $date = new DateTime();
+                    $timestamp1 = $date->getTimestamp();
+                    $timestamp2 = (string) ((int) $timestamp1 + (int) $dataArray['expires_in']);
+                    $this->response['createdAt'] = date("Y/m/d H:i:s",$timestamp1);
+                    $this->response['expiresAt'] = date("Y/m/d H:i:s",$timestamp2);
                     $this->response['tokenType'] = $dataArray['token_type'];
-                    $this->response['expiresIn'] = $dataArray['expires_in'];
                     $this->response['accessToken'] = $dataArray['access_token'];
                     $this->response['refreshToken'] = $dataArray['refresh_token'];
+                    $this->response['expiresIn'] = $dataArray['expires_in'];
                     $this->response['userConnected'] = true;
+                    
                     
                 } catch (\GuzzleHttp\Exception\GuzzleException $e) {
                     
@@ -188,16 +204,6 @@ class AuthController extends Controller
         
     }
     
-    public function loginPassportPersonalToken(Request $request){
-        
-        // TODO
-        $this->response['userInformations'] =  "Connexion via Passport Personal";
-        $this->response['errorCode'] = 400;
-        $this->response['errorType'] = "undefined_endpoint";
-        $this->response['errorDescription'] = "The server has not configured this endpoint yet.";
-        return $this->response;
-    }
-    
     public function generateAuthorizeUrl(Request $request){
         
         $userRepository = new UserRepository(new User);
@@ -211,6 +217,7 @@ class AuthController extends Controller
             if($response  != null){
                 $apiUrl = config('services.passport.login_endpoint_authorize')."?client_id=".$response->id."&redirect_uri=".$response->redirect."&response_type=code";
                 $this->response['apiUrl'] = $apiUrl;
+                
             }else{
                 // User not exist in the oauth client database
                 $this->response['errorCode'] = 400;
@@ -228,6 +235,38 @@ class AuthController extends Controller
                          
         return $this->response;
         
+    }
+    
+      
+    public function loginPassportTest(Request $request){
+                                
+        $http = new Client;
+        $userToken = $request->clientAccessToken;
+        $tab = array();
+        
+        try {
+            
+            $response = $http->get('http://localhost:8888/Laravel-WS/public/api/user/1', [
+                'headers' => [
+                    'Authorization' => 'Bearer '.$userToken,
+                    'Accept' => 'application/json',
+                ],
+            ]);
+            
+            $tab['state'] = 'success';
+            $tab['data'] = $response->getBody()->getContents();
+            return $tab;
+            
+        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+            
+            $tab['state'] = 'error';
+            $tab['errorCode'] = $e->getCode();
+            $tab['errorDescription'] = $e->getMessage();
+            return $tab;
+            
+            
+        }
+                
     }
     
 }
