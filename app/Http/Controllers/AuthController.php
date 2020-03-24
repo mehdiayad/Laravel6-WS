@@ -83,7 +83,7 @@ class AuthController extends Controller
             $http = new Client;
             
             try {
-                $response = $http->post(config('services.passport.login_endpoint_token'), [
+                $response = $http->post(config('services.passport.oauth_token_endpoint'), [
                     'form_params' => [
                         'grant_type' => 'password',
                         'client_id' => config('services.passport.client_id'),
@@ -167,7 +167,7 @@ class AuthController extends Controller
                 
                 try {
                     
-                    $response = $http->post(config('services.passport.login_endpoint_token'), [
+                    $response = $http->post(config('services.passport.oauth_token_endpoint'), [
                         'form_params' => [
                             'grant_type' => 'authorization_code',
                             'client_id' => $clientId,
@@ -234,7 +234,7 @@ class AuthController extends Controller
             $response = $this->authRepositoryInterface->getOauthClient($user->id);
             
             if($response  != null){
-                $apiUrl = config('services.passport.login_endpoint_authorize')."?client_id=".$response->id."&redirect_uri=".$response->redirect."&response_type=code";
+                $apiUrl = config('services.passport.oauth_authorize_endpoint')."?client_id=".$response->id."&redirect_uri=".$response->redirect."&response_type=code";
                 $this->response['apiUrl'] = $apiUrl;
                 
             }else{
