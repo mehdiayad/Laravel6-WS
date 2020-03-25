@@ -24,6 +24,7 @@
 - Passport : 8.4
 - FruitCake : 1.0
 
+
 ## Project concepts used
 - Laravel Authentification 
 - Passport Authentification
