@@ -64,7 +64,13 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    
+                                 	<a class="dropdown-item" href="{{ route('telescope') }}">
+                                        Monitoring
+                                    </a> 
+                                    
                                 </div>
+                                
                             </li>
                         @endguest
                     </ul>

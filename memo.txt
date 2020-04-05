@@ -1,0 +1,3 @@
+sudo apachectl start
+sudo apachectl stop
+sudo apachectl restart

@@ -67,6 +67,7 @@
 - Run the command [php artisan migrate:install]
 - Run the command [php artisan migrate]
 - Run the command [php artisan passport:install]
+- Run the command [php artisan telescope:install]
 - Run the command [php artisan db:seed]
 - Go to the database (http://localhost:8888/phpMyAdmin/index.php)
 - Go to the table oauth_clients

@@ -24,8 +24,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // $schedule->command('inspire')->hourly();
+        
+        // By default, all entries older than 24 hours will be pruned
+        $schedule->command('telescope:prune')->daily();
+        
     }
 
     /**
