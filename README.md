@@ -14,8 +14,9 @@
 
 ## Project requirements
 
-- Server : MAMP / WAMP / XAMPP
+- Apache Server
 - Browser : Chrome / Mozilla
+
 
 ## Project components version
 
@@ -39,7 +40,7 @@
 - Relationship
 - Cors Policy
 
-## Project setup (Create Database)
+## 1) Setup database (MYSQL)
 
 - install MAMP
 - Open MAMP application
@@ -47,9 +48,13 @@
 - Go to webstart page -> tools -> phpMyAdmin
 - create a database name 'laravel'
 
+## 2) Setup server (APACHE)
+
+- install Apache
+- TO COMPLETE ...
 
 
-## Project setup (Create Project)
+## 3) Setup project (LARAVEL)
 
 - Go to MAMP preferences and set up your web server document root
 - (MAMP -> preferences -> Web Server -> Document Root -> Select (Desktop/Web for example)
@@ -83,6 +88,6 @@
 
 ## WARNING
 
-- Because the laravel build-in server in singlethread, if you run this application with php artisan serve, the front API won't be able to connect through this API. You must use a multi-thread server (APACHE or NGINX). This is why we use MAMP server on the project setup with apache built-in server
+- Because the laravel build-in server in singlethread, if you run this application with php artisan serve, the front API won't be able to connect through this API. You must use a multi-thread server (APACHE or NGINX)
 
 

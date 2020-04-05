@@ -23,8 +23,9 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-// Write for MAMP server to work
-window.axios.defaults.baseURL='http://localhost:8888/Laravel-WS/public/'
+// ACTIVATE ONLY FOR MAMP SERVER
+// DESACTIVATE FOR APACHE
+// window.axios.defaults.baseURL='http://localhost:8888/Laravel-WS/public/'
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
