@@ -40,31 +40,48 @@
 - Relationship
 - Cors Policy
 
-## 1) Setup database (MYSQL)
 
-- install MAMP
-- Open MAMP application
-- you should see MAMP home page on http://localhost:8888/
-- Go to webstart page -> tools -> phpMyAdmin
-- create a database name 'laravel'
+## 1) Setup project 1/2 (LARAVEL)
 
-## 2) Setup server (APACHE)
+- Go to https://github.com/mehdiayad/Laravel-WS and download the project
+- Put the project in your Sites Directory (/Users/<user>/Sites/)
 
-- install Apache
-- TO COMPLETE ...
+## 2) Setup server (APACHE) Mac version
 
+- Install Apache with homebrew (brew install httpd)
+- Open the conf file (/usr/local/etc/httpd/httpd.conf)
+- Find the line with listen XXX and change it to 8090
+- Find the line with DocumentRoot XXX and change it to "/Users/<user>/Sites/Laravel-WS/public"
+- Find the line with LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so and remove the #
+- Find the line with LoadModule php7_module /usr/libexec/apache2/libphp7.so and remove the # (add it if not exist)
+- Find the line with <Directory /> AllowOverride None and set it to AllowOverride All
+- Find the line with DirectoryIndex XXX and add index.php
+- Find the line with serverName XXX and set it to localhost
+- Find the line with user XXX and set it your user
+- Find the line with group XXX and set it to staff 
+- Run sudo apachectl start
+- Go to http://localhost:8090/
+- You should see the home page
 
-## 3) Setup project (LARAVEL)
+## 3) Setup database (MYSQL) Mac version
 
-- Go to MAMP preferences and set up your web server document root
-- (MAMP -> preferences -> Web Server -> Document Root -> Select (Desktop/Web for example)
-- download the project from github
-- Place the project inside your MAMP Web Server  root folder (Desktop/Web)
-- Come back to MAMP/WAMP webstart page, you should see all MySQL informations connections 
+- Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
+- Go through the guide install and choose a password for your user ex: user (root) password(root1234)
+- once installation finished open the terminal and enter mysql -u root -p
+- Enter the password
+- you should see 'Welcome to the MySQL monitor'
+- if you use Mysql8 type ALTER USER root@localhost identified with mysql_native_password by 'root1234'; for make it compatible with laravel
+- enter CREATE DATABASE laravel;
+- enter SHOW DATABASES; and verify if laravel is in the result
+- Download mysqlworkbench from official website
+- Launch the instal then from the dashboard connect the the instance with 3306 port
+- clic on server status then memorize the setup (host/port/socket)
 - update project/.env databases informations with MySQL informations connections
 - update project/config/database.php databases informations with MySQL informations connections
-- Delete the folder vendor if exist
-- Delete the folder node_modules if exist
+- Mysql is ready to use
+
+## 4) Setup project 2/2 (LARAVEL)
+
 - Open the terminal and go to your project directory
 - Run the command [npm install]
 - Run the command [npm run dev]
@@ -74,15 +91,11 @@
 - Run the command [php artisan passport:install]
 - Run the command [php artisan telescope:install]
 - Run the command [php artisan db:seed]
-- Go to the database (http://localhost:8888/phpMyAdmin/index.php)
-- Go to the table oauth_clients
+- Open Mysql Workbench and go to the table oauth_clients
 - Copy the secret of the Laravel Password Grant Client
 - Paste the secret of the env.file of the project (PASSPORT_CLIENT_SECRET=XXXX)
-- Come back to http://localhost:8888/Laravel-WS/public/
 - You should see the login page authentification
 - You can connect to the app with (email:super@gmail.com / password:super)
-- Create a new Client and give a random name
-- You should see a client id associated to the random name you've just given
 - The setup is now completed
 
 
