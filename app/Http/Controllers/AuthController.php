@@ -60,6 +60,7 @@ class AuthController extends Controller
     public function passportAuthGrant(Request $request)
     {
         
+        
         //Variables
         $userRepository = new UserRepository(new User);
         $this->response['userEmail'] = $request->email;
@@ -83,15 +84,17 @@ class AuthController extends Controller
             $http = new Client;
             
             try {
-                $response = $http->post(config('services.passport.oauth_token_endpoint'), [
+                $response = $http->post(config('services.passport.apache_oauth_token_endpoint'), [
                     'form_params' => [
                         'grant_type' => 'password',
                         'client_id' => config('services.passport.client_id'),
-                        'client_secret' => config('services.passport.client_secret'),
+                        'client_secret' => config('services.apache_passport.client_secret'),
                         'username' => $request->email,
                         'password' => $request->password,
                     ]
                 ]);
+                                
+                // $response is empty cause error with ->getBody()
                 
                 $dataJson = $response->getBody();
                 $dataArray = json_decode($dataJson, true);                
@@ -167,7 +170,7 @@ class AuthController extends Controller
                 
                 try {
                     
-                    $response = $http->post(config('services.passport.oauth_token_endpoint'), [
+                    $response = $http->post(config('services.passport.apache_oauth_token_endpoint'), [
                         'form_params' => [
                             'grant_type' => 'authorization_code',
                             'client_id' => $clientId,
