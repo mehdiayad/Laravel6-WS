@@ -83,19 +83,26 @@ class AuthController extends Controller
 
             $http = new Client;
             
+            
+            $test = array();
+            $test[1] = config('services.passport.apache_oauth_token_endpoint');
+            $test[2] = config('services.passport.apache_client_id');
+            $test[3] = config('services.passport.apache_client_secret');
+            //return $test;
+            
             try {
+                
                 $response = $http->post(config('services.passport.apache_oauth_token_endpoint'), [
                     'form_params' => [
                         'grant_type' => 'password',
-                        'client_id' => config('services.passport.client_id'),
-                        'client_secret' => config('services.apache_passport.client_secret'),
+                        'client_id' => config('services.passport.apache_client_id'),
+                        'client_secret' => config('services.passport.apache_client_secret'),
                         'username' => $request->email,
                         'password' => $request->password,
                     ]
                 ]);
-                                
+                       
                 // $response is empty cause error with ->getBody()
-                
                 $dataJson = $response->getBody();
                 $dataArray = json_decode($dataJson, true);                
                 
