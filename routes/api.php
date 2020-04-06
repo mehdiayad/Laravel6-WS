@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
+// Route::resource('product', 'ProductController'); T
+
 Route::post('/passportAuthSimple', 'AuthController@passportAuthSimple')->name('passportAuthSimple');
 
 Route::post('/passportAuthGrant', 'AuthController@passportAuthGrant')->name('passportAuthGrant');
