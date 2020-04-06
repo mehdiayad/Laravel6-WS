@@ -5,5 +5,5 @@ sudo apachectl restart
 ALTER USER root@localhost identified with mysql_native_password by 'root1234';
 CREATE USER root1@localhost identified with mysql_native_password by 'root1234';
 
-sudo lsof -i :8889
-sudo lsof -nti:8887 | xargs kill -9
+sudo lsof -i :8888
+sudo lsof -nti:8888 | xargs kill -9
