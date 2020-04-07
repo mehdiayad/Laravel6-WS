@@ -46,22 +46,27 @@
 - Go to https://github.com/mehdiayad/Laravel-WS and download the project
 - Put the project in your Sites Directory (/Users/<user>/Sites/)
 
-## 2) Setup server (APACHE) Mac version
+## 2A) Setup server (NGINX) Mac version
 
-- Install Apache with homebrew (brew install httpd)
-- Open the conf file (/usr/local/etc/httpd/httpd.conf)
-- Find the line with listen XXX and change it to 8090
-- Find the line with DocumentRoot XXX and change it to "/Users/<user>/Sites/Laravel-WS/public"
-- Find the line with LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so and remove the #
-- Find the line with LoadModule php7_module /usr/libexec/apache2/libphp7.so and remove the # (add it if not exist)
-- Find the line with <Directory /> AllowOverride None and set it to AllowOverride All
-- Find the line with DirectoryIndex XXX and add index.php
-- Find the line with serverName XXX and set it to localhost
-- Find the line with user XXX and set it your user
-- Find the line with group XXX and set it to staff 
-- Run sudo apachectl start
-- Go to http://localhost:8090/
-- You should see the home page
+- Install brew install nginx (brew install nginx)
+- Open the conf file (/usr/local/etc/nginx/nginx.conf)
+- On the first line add user <username> staff; replace it with your name
+- Set listen to 8090
+- Set server_name to localhost
+- Set root to your project public directory (ex : /Users/<user>/Sites/Laravel-WS/public/)
+- Open your php-fm.conf (usr/local/etc/php/7.2/php-fpm.d/www.conf)
+- Find the line Listen (ex: listen = 127.0.0.1:9000) The address on which to accept FastCGI requests 
+- Come back to your nginx conf file
+- Set the fastcgi value to the listen value (ex : 127.0.0.1:9000)
+- Start nginx (sudo nginx) or stop nginx (sudo nginx -s stop) then start again
+- Go to localhost:8090
+- if you see the login page, the setup is now completed
+- For more informations see the nginx conf in the docs folder 
+
+
+## 2B) Setup server (APACHE) Mac version
+
+- TO DO
 
 ## 3) Setup database (MYSQL) Mac version
 
