@@ -2,6 +2,9 @@ sudo apachectl start
 sudo apachectl stop
 sudo apachectl restart
 
+sudo nginx -s stop
+sudo nginx
+
 ALTER USER root@localhost identified with mysql_native_password by 'root1234';
 CREATE USER root1@localhost identified with mysql_native_password by 'root1234';
 
