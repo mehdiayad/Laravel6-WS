@@ -59,13 +59,10 @@ class AuthController extends Controller
     
     public function passportAuthGrant(Request $request)
     {
-        
-        
         //Variables
         $userRepository = new UserRepository(new User);
         $this->response['userEmail'] = $request->email;
         $this->response['userInformations'] =  "Connexion via Passport Grant";
-        
         
         if($userRepository->existByEmail($request->email)){
                         
@@ -84,10 +81,10 @@ class AuthController extends Controller
             $http = new Client;
             
             
-            $test = array();
-            $test[1] = config('services.passport.apache_oauth_token_endpoint');
-            $test[2] = config('services.passport.apache_client_id');
-            $test[3] = config('services.passport.apache_client_secret');
+            //$test = array();
+            //$test[1] = config('services.passport.apache_oauth_token_endpoint');
+            //$test[2] = config('services.passport.apache_client_id');
+            //$test[3] = config('services.passport.apache_client_secret');
             //return $test;
             
             try {
@@ -102,7 +99,6 @@ class AuthController extends Controller
                     ]
                 ]);
                        
-                // $response is empty cause error with ->getBody()
                 $dataJson = $response->getBody();
                 $dataArray = json_decode($dataJson, true);                
                 
