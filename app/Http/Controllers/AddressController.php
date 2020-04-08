@@ -27,6 +27,7 @@ class AddressController extends Controller
     {
         // variable
         $user_id = 0;
+        $addresses = null;
         
         // get data
         if( Auth::user() != null && Auth::user()->id != null){
