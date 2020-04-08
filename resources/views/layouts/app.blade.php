@@ -35,9 +35,13 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                    
+                    @if(true)
+                    
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepositoryInterface;
-use Illuminate\Support\Facades\Auth;
-use App\Model\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
