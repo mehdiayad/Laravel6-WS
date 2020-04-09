@@ -71,6 +71,10 @@
                                         Monitoring
                                     </a> 
                                     
+                                    <a class="dropdown-item">
+                                         ( {{ config('app.env') }} )
+                                    </a> 
+                                                                        
                                 </div>
                                 
                             </li>
@@ -83,6 +87,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        
     </div>
 </body>
 </html>

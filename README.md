@@ -62,11 +62,35 @@
 - Go to localhost:8090
 - if you see the login page, the setup is now completed
 - For more informations see the nginx conf in the docs folder 
+- Commands to remember
+	- sudo nginx (start by default)
+	- sudo nginx -s stop
+	- sudo nginx -s reload
 
 
 ## 2B) Setup server (APACHE) Mac version
 
-- TO DO
+- Install brew install apache (brew install httpd)
+- Open the conf file (/usr/local/etc/httpd/httpd.conf)
+- Find the line with Listen and change port to 8070
+- Find the bloc <IfModule mime_module> and add inside AddType application/x-httpd-php .php
+- Set the line with User to your User
+- Set the line with group to staff
+- Set the line with ServerName to localhost
+- Uncomment the line with LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so (add it if not exist)
+- Uncomment the line with LoadModule php7_module /usr/libexec/apache2/libphp7.so (add it if not exist)
+- Find the line with <Directory /> and set AllowOverride to All
+- Find the line with <Directory /> and set Require to all granted
+- Find the line with DocumentRoot and set your laravel public directory path
+- Just below set the Directory path to your laravel public directory path also
+- Find the line <IfModule dir_module> and add index.php
+- Go to localhost:8070
+- if you see the login page, the setup is now completed
+- For more informations see the apache conf in the docs folder 
+- Commands to remember
+	- sudo apachectl start
+	- sudo apachectl stop
+	- sudo apachectl restart
 
 ## 3) Setup database (MYSQL) Mac version
 
