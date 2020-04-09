@@ -72,7 +72,7 @@
                                     </a> 
                                     
                                     <a class="dropdown-item">
-                                         ( {{ config('app.env') }} )
+                                         Environnement : {{ config('app.env') }}
                                     </a> 
                                                                         
                                 </div>
