@@ -24,7 +24,7 @@
 - PHP : 7.2
 - Passport : 8.4
 - FruitCake : 1.0
-
+- Swagger : 6.0
 
 ## Project concepts used
 - Laravel Authentification 
@@ -126,6 +126,12 @@
 - You should see the login page authentification
 - You can connect to the app with (email:super@gmail.com / password:super)
 - The setup is now completed
+
+
+## DOCUMENTATION
+
+- Refer to http://localhost:8070/api/documentation for more informations (APACHE)
+- Refer to http://localhost:8090/api/documentation for more informations (NGINX)
 
 
 ## WARNING
