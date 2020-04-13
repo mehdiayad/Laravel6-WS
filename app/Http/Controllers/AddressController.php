@@ -6,6 +6,15 @@ use App\Repositories\AddressRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
+/**
+ * @OA\Tag(
+ *     name="address-controller",
+ *     description="Address Controller" 
+ * )
+ * 
+ */
+
 class AddressController extends Controller
 {
     
@@ -19,10 +28,22 @@ class AddressController extends Controller
     }
     
     /**
+     * @OA\Get(
+     *      tags={"address-controller"},
+     *      summary="index",
+     *      path="/address",
+     *      description="Display a listing of the resource",
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation"
+     *       )
+     * )
+     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         // variable
@@ -44,6 +65,17 @@ class AddressController extends Controller
     }
     
     /**
+     * @OA\Get(
+     *      tags={"address-controller"},
+     *      summary="create",
+     *      path="/address/create",
+     *      description="Show the form for creating a new resource",
+     *      @OA\Response(
+     *          response=200,
+     *          description="OK"
+     *       )
+     * )
+     *
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -54,17 +86,76 @@ class AddressController extends Controller
     }
 
     /**
+     * @OA\Post(
+     *      tags={"address-controller"},
+     *      summary="store",
+     *      path="/address",
+     *      description="Store a newly created resource in storage",
+     *      @OA\Parameter(
+     *          name="var1",
+     *          required=true,
+     *          description="variable 1",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="var2",
+     *          required=true,
+     *          description="variable 2",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="var3",
+     *          required=true,
+     *          description="variable 3",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *         response=200,
+     *          description="OK"
+     *     )
+     * )
+     *
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
         //
     }
 
     /**
+     * @OA\Get(
+     *      tags={"address-controller"},
+     *      summary="show",
+     *      path="/address/{id}",
+     *      description="Display the specified resource",
+     *      @OA\Response(
+     *          response=200,
+     *          description="OK"
+     *       ),
+     *      @OA\Parameter(
+     *          name="id",
+     *          required=true,
+     *          description="Object id",
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      )     
+     *     )
+     *
      * Display the specified resource.
      *
      * @param  int  $id
@@ -76,6 +167,26 @@ class AddressController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *      tags={"address-controller"},
+     *      summary="edit",
+     *      path="/address/{id}/edit",
+     *      description="Show the form for editing the specified resource",
+     *      @OA\Parameter(
+     *          name="id",
+     *          required=true,
+     *          description="Object id",
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="OK"
+     *       )
+     *     )
+     *     
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -87,6 +198,53 @@ class AddressController extends Controller
     }
 
     /**
+     * @OA\Put(
+     *      tags={"address-controller"},
+     *      summary="update",
+     *      path="/address/{id}",
+     *      description="Update the specified resource in storage",
+     *      @OA\Parameter(
+     *          name="id",
+     *          required=true,
+     *          description="Object id",
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="var1",
+     *          required=true,
+     *          description="variable 1",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="var2",
+     *          required=true,
+     *          description="variable 2",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="var3",
+     *          required=true,
+     *          description="variable 3",
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description="OK"
+     *       )
+     *     )
+     *     
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -99,6 +257,25 @@ class AddressController extends Controller
     }
 
     /**
+     * @OA\Delete(
+     *      tags={"address-controller"},
+     *      summary="delete",
+     *      path="/address/{id}",
+     *      description="Remove the specified resource from storage",
+     *      @OA\Parameter(
+     *          name="id",
+     *          required=true,
+     *          description="Object id",
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="OK"
+     *       )
+     *     )
      * Remove the specified resource from storage.
      *
      * @param  int  $id

@@ -1,0 +1,219 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api Documentation",
+        "description": "Api Documentation",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/address": {
+            "get": {
+                "tags": [
+                    "address-controller"
+                ],
+                "summary": "index",
+                "description": "Display a listing of the resource",
+                "operationId": "App\\Http\\Controllers\\AddressController::index",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "address-controller"
+                ],
+                "summary": "store",
+                "description": "Store a newly created resource in storage",
+                "operationId": "App\\Http\\Controllers\\AddressController::store",
+                "parameters": [
+                    {
+                        "name": "var1",
+                        "in": "query",
+                        "description": "variable 1",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "var2",
+                        "in": "query",
+                        "description": "variable 2",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "var3",
+                        "in": "query",
+                        "description": "variable 3",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/address/create": {
+            "get": {
+                "tags": [
+                    "address-controller"
+                ],
+                "summary": "create",
+                "description": "Show the form for creating a new resource",
+                "operationId": "App\\Http\\Controllers\\AddressController::create",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/address/{id}": {
+            "get": {
+                "tags": [
+                    "address-controller"
+                ],
+                "summary": "show",
+                "description": "Display the specified resource",
+                "operationId": "App\\Http\\Controllers\\AddressController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Object id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "address-controller"
+                ],
+                "summary": "update",
+                "description": "Update the specified resource in storage",
+                "operationId": "App\\Http\\Controllers\\AddressController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Object id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "var1",
+                        "in": "query",
+                        "description": "variable 1",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "var2",
+                        "in": "query",
+                        "description": "variable 2",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "var3",
+                        "in": "query",
+                        "description": "variable 3",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "address-controller"
+                ],
+                "summary": "delete",
+                "description": "Remove the specified resource from storage",
+                "operationId": "App\\Http\\Controllers\\AddressController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Object id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/address/{id}/edit": {
+            "get": {
+                "tags": [
+                    "address-controller"
+                ],
+                "summary": "edit",
+                "description": "Show the form for editing the specified resource",
+                "operationId": "App\\Http\\Controllers\\AddressController::edit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Object id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "address-controller",
+            "description": "Address Controller"
+        }
+    ]
+}
