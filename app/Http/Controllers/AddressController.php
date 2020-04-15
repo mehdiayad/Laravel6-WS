@@ -35,7 +35,8 @@ class AddressController extends Controller
      *      description="Display a listing of the resource",
      *      @OA\Response(
      *          response=200,
-     *          description="successful operation"
+     *          description="successful operation",
+     *         )
      *       )
      * )
      *
