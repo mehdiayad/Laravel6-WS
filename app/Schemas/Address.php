@@ -1,98 +1,53 @@
 <?php
-namespace App\Schemas;
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * @OA\Schema(
- *     title="Address",
- *     description="Address model",
- * )
+ * @property int $id
+ * @property int $user_id
+ * @property string $full_name
+ * @property string $address
+ * @property string $city
+ * @property string $country
+ * @property string $postal_code
+ * @property string $cell_number
+ * @property boolean $is_billing
+ * @property boolean $is_shipping
+ * @property boolean $is_default
+ * @property string $extra_detail
+ * @property string $active
+ * @property string $created_at
+ * @property string $updated_at
  */
-class Project
-{
+
+    /** @OA\Schema(
+    *     description="Pets Category",
+    *     title="Pets Category",
+    *     @OA\Xml(
+    *         name="Address"
+    *     )
+    * )
+    */
     
+class Address extends Model
+{
+    /**
+     * @var array
+     */
+    protected $fillable = ['user_id', 'full_name', 'address', 'city', 'country', 'postal_code', 'cell_number', 'is_billing', 'is_shipping', 'is_default', 'extra_detail', 'active', 'created_at', 'updated_at'];
+
     /**
      * @OA\Property(
      *     title="ID",
      *     description="ID",
      *     format="int64",
-     *     example=1
      * )
      *
      * @var integer
      */
     private $id;
     
-    /**
-     * @OA\Property(
-     *      title="Name",
-     *      description="Name of the new project",
-     *      example="A nice project"
-     * )
-     *
-     * @var string
-     */
-    public $name;
-    
-    /**
-     * @OA\Property(
-     *      title="Description",
-     *      description="Description of the new project",
-     *      example="This is new project's description"
-     * )
-     *
-     * @var string
-     */
-    public $description;
-    
-    /**
-     * @OA\Property(
-     *     title="Created at",
-     *     description="Created at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    private $created_at;
-    
-    /**
-     * @OA\Property(
-     *     title="Updated at",
-     *     description="Updated at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    private $updated_at;
-    
-    /**
-     * @OA\Property(
-     *     title="Deleted at",
-     *     description="Deleted at",
-     *     example="2020-01-27 17:50:45",
-     *     format="datetime",
-     *     type="string"
-     * )
-     *
-     * @var \DateTime
-     */
-    private $deleted_at;
-    
-    /**
-     * @OA\Property(
-     *      title="Author ID",
-     *      description="Author's id of the new project",
-     *      format="int64",
-     *      example=1
-     * )
-     *
-     * @var integer
-     */
-    public $author_id;
     
 }

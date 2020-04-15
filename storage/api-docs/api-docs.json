@@ -212,59 +212,21 @@
     },
     "components": {
         "schemas": {
-            "Project": {
-                "title": "Address",
-                "description": "Address model",
+            "Address": {
+                "title": "Pets Category",
+                "description": "Pets Category",
                 "properties": {
                     "id": {
                         "title": "ID",
                         "description": "ID",
                         "type": "integer",
-                        "format": "int64",
-                        "example": 1
-                    },
-                    "name": {
-                        "title": "Name",
-                        "description": "Name of the new project",
-                        "type": "string",
-                        "example": "A nice project"
-                    },
-                    "description": {
-                        "title": "Description",
-                        "description": "Description of the new project",
-                        "type": "string",
-                        "example": "This is new project's description"
-                    },
-                    "created_at": {
-                        "title": "Created at",
-                        "description": "Created at",
-                        "type": "string",
-                        "format": "datetime",
-                        "example": "2020-01-27 17:50:45"
-                    },
-                    "updated_at": {
-                        "title": "Updated at",
-                        "description": "Updated at",
-                        "type": "string",
-                        "format": "datetime",
-                        "example": "2020-01-27 17:50:45"
-                    },
-                    "deleted_at": {
-                        "title": "Deleted at",
-                        "description": "Deleted at",
-                        "type": "string",
-                        "format": "datetime",
-                        "example": "2020-01-27 17:50:45"
-                    },
-                    "author_id": {
-                        "title": "Author ID",
-                        "description": "Author's id of the new project",
-                        "type": "integer",
-                        "format": "int64",
-                        "example": 1
+                        "format": "int64"
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "xml": {
+                    "name": "Address"
+                }
             }
         }
     },

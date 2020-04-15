@@ -36,7 +36,8 @@ class AddressController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="successful operation",
-     *         )
+     *         ),
+     *         
      *       )
      * )
      *
