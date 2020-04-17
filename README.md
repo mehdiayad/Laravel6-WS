@@ -132,10 +132,15 @@
 
 ## DOCUMENTATION
 
-- Run php artisan l5-swagger:generate for generate documentation
 - Refer to http://localhost:8070/api/documentation for more informations (APACHE)
 - Refer to http://localhost:8090/api/documentation for more informations (NGINX)
 
+
+## MEMO
+
+- Generate model from database php artisan krlove:generate:model User --table-name=users
+- Generate documentation php artisan l5-swagger:generate for generate documentation
+- https://quickadminpanel.com/blog/laravel-api-documentation-with-openapiswagger/
 
 ## WARNING
 

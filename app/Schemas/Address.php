@@ -22,13 +22,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  */
 
-    /** @OA\Schema(
-    *     title="Address",
-    *     @OA\Xml(
-    *         name="Address"
-    *     )
-    *   )
-    */
+/** @OA\Schema(
+ *     title="Address",
+ *     @OA\Xml(
+ *         name="Address"
+ *     )
+ *   )
+ */
+
     
 class Address extends Model
 {
@@ -38,36 +39,108 @@ class Address extends Model
     protected $fillable = ['user_id', 'full_name', 'address', 'city', 'country', 'postal_code', 'cell_number', 'is_billing', 'is_shipping', 'is_default', 'extra_detail', 'active', 'created_at', 'updated_at'];
 
     /**
-     * @OA\Property(
-     *     title="id",
-     *     description="id address",
-     *     format="int64",
-     * )
+     * @OA\Property(format="int64")
      *
      * @var integer
      */
     private $id;
     
     /**
-     * @OA\Property(
-     *     title="user_id",
-     *     description="id user",
-     *     format="int64",
-     * )
+     * @OA\Property()
      *
      * @var integer
      */
     private $user_id;
     
     /**
-     * @OA\Property(
-     *     title="full_name",
-     *     description="fullname of user address",
-     * )
+     * @OA\Property()
      *
      * @var string
      */
     private $fullname;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var string
+     */
+    private $address;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var string
+     */
+    private $city;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var string
+     */
+    private $country;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var string
+     */
+    private $postal_code;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var string
+     */
+    private $cell_number;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var boolean
+     */
+    private $is_billing;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var boolean
+     */
+    private $is_shipping;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var boolean
+     */
+    private $is_default;
+    
+    /**
+     * @OA\Property()
+     * @var string
+     */
+    private $extra_detail;
+    
+    /**
+     * @OA\Property(format="char")
+     *
+     * @var string
+     */
+    private $active;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var \DateTime
+     */
+    private $created_at;
+    
+    /**
+     * @OA\Property()
+     *
+     * @var \DateTime
+     */
+    private $updated_at;
     
     
 }

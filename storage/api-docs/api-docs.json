@@ -192,26 +192,82 @@
                 "title": "Address",
                 "properties": {
                     "id": {
-                        "title": "id",
-                        "description": "id address",
                         "type": "integer",
                         "format": "int64"
                     },
                     "user_id": {
-                        "title": "user_id",
-                        "description": "id user",
-                        "type": "integer",
-                        "format": "int64"
+                        "type": "integer"
                     },
                     "fullname": {
-                        "title": "full_name",
-                        "description": "fullname of user address",
                         "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "postal_code": {
+                        "type": "string"
+                    },
+                    "cell_number": {
+                        "type": "string"
+                    },
+                    "is_billing": {
+                        "type": "boolean"
+                    },
+                    "is_shipping": {
+                        "type": "boolean"
+                    },
+                    "is_default": {
+                        "type": "boolean"
+                    },
+                    "extra_detail": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "string",
+                        "format": "char"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
                     }
                 },
                 "type": "object",
                 "xml": {
                     "name": "Address"
+                }
+            },
+            "Cart": {
+                "title": "Cart",
+                "xml": {
+                    "name": "Cart"
+                }
+            },
+            "Category": {
+                "title": "Category",
+                "xml": {
+                    "name": "Category"
+                }
+            },
+            "Product": {
+                "title": "Product",
+                "xml": {
+                    "name": "Product"
+                }
+            },
+            "User": {
+                "title": "User",
+                "xml": {
+                    "name": "User"
                 }
             }
         }
