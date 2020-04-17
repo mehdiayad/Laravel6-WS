@@ -35,9 +35,9 @@ class AddressController extends Controller
      *      description="Display a listing of the resource",
      *      @OA\Response(
      *          response=200,
-     *          description="successful operation",
+     *          description="OK",
+     *          @OA\JsonContent(ref="#/components/schemas/Address"),
      *         ),
-     *         
      *       )
      * )
      *
@@ -94,32 +94,11 @@ class AddressController extends Controller
      *      path="/address",
      *      description="Store a newly created resource in storage",
      *      @OA\Parameter(
-     *          name="var1",
-     *          required=true,
-     *          description="variable 1",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
+     *         name = "Address",
+     *         in="query",
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/Address")
      *      ),
-     *      @OA\Parameter(
-     *          name="var2",
-     *          required=true,
-     *          description="variable 2",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="var3",
-     *          required=true,
-     *          description="variable 3",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),     
      *      @OA\Response(
      *         response=200,
      *          description="OK"
@@ -143,10 +122,6 @@ class AddressController extends Controller
      *      summary="show",
      *      path="/address/{id}",
      *      description="Display the specified resource",
-     *      @OA\Response(
-     *          response=200,
-     *          description="OK"
-     *       ),
      *      @OA\Parameter(
      *          name="id",
      *          required=true,
@@ -155,9 +130,14 @@ class AddressController extends Controller
      *          @OA\Schema(
      *              type="integer"
      *          )
-     *      )     
-     *     )
-     *
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/Address")
+     *      )
+     * )
+     *     
      * Display the specified resource.
      *
      * @param  int  $id
@@ -215,32 +195,11 @@ class AddressController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="var1",
-     *          required=true,
-     *          description="variable 1",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="var2",
-     *          required=true,
-     *          description="variable 2",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),
-     *      @OA\Parameter(
-     *          name="var3",
-     *          required=true,
-     *          description="variable 3",
-     *          in="query",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),     
+     *         name = "Address",
+     *         in="query",
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/Address")
+     *      ),   
      *      @OA\Response(
      *          response=200,
      *          description="OK"

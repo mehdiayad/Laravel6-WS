@@ -25,6 +25,7 @@
 - Passport : 8.4
 - FruitCake : 1.0
 - Swagger : 6.0
+- Eloquent Model Generator : 1.3
 
 ## Project concepts used
 - Laravel Authentification 
@@ -128,8 +129,10 @@
 - The setup is now completed
 
 
+
 ## DOCUMENTATION
 
+- Run php artisan l5-swagger:generate for generate documentation
 - Refer to http://localhost:8070/api/documentation for more informations (APACHE)
 - Refer to http://localhost:8090/api/documentation for more informations (NGINX)
 

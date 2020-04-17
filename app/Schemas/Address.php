@@ -23,12 +23,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 
     /** @OA\Schema(
-    *     description="Pets Category",
-    *     title="Pets Category",
+    *     title="Address",
     *     @OA\Xml(
     *         name="Address"
     *     )
-    * )
+    *   )
     */
     
 class Address extends Model
@@ -40,14 +39,35 @@ class Address extends Model
 
     /**
      * @OA\Property(
-     *     title="ID",
-     *     description="ID",
+     *     title="id",
+     *     description="id address",
      *     format="int64",
      * )
      *
      * @var integer
      */
     private $id;
+    
+    /**
+     * @OA\Property(
+     *     title="user_id",
+     *     description="id user",
+     *     format="int64",
+     * )
+     *
+     * @var integer
+     */
+    private $user_id;
+    
+    /**
+     * @OA\Property(
+     *     title="full_name",
+     *     description="fullname of user address",
+     * )
+     *
+     * @var string
+     */
+    private $fullname;
     
     
 }

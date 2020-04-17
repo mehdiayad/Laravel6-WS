@@ -20,7 +20,14 @@
                 "operationId": "App\\Http\\Controllers\\AddressController::index",
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -33,30 +40,11 @@
                 "operationId": "App\\Http\\Controllers\\AddressController::store",
                 "parameters": [
                     {
-                        "name": "var1",
+                        "name": "Address",
                         "in": "query",
-                        "description": "variable 1",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "var2",
-                        "in": "query",
-                        "description": "variable 2",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "var3",
-                        "in": "query",
-                        "description": "variable 3",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/components/schemas/Address"
                         }
                     }
                 ],
@@ -103,7 +91,14 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -125,30 +120,11 @@
                         }
                     },
                     {
-                        "name": "var1",
+                        "name": "Address",
                         "in": "query",
-                        "description": "variable 1",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "var2",
-                        "in": "query",
-                        "description": "variable 2",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "var3",
-                        "in": "query",
-                        "description": "variable 3",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/components/schemas/Address"
                         }
                     }
                 ],
@@ -213,14 +189,24 @@
     "components": {
         "schemas": {
             "Address": {
-                "title": "Pets Category",
-                "description": "Pets Category",
+                "title": "Address",
                 "properties": {
                     "id": {
-                        "title": "ID",
-                        "description": "ID",
+                        "title": "id",
+                        "description": "id address",
                         "type": "integer",
                         "format": "int64"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id user",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "fullname": {
+                        "title": "full_name",
+                        "description": "fullname of user address",
+                        "type": "string"
                     }
                 },
                 "type": "object",
