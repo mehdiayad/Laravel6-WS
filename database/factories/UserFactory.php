@@ -22,6 +22,7 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->email,
         'password' => bcrypt('factory123'),
         'role' => 'RW',
+        'activated' => '0',
         'active' => '1',
         'remember_token' => Str::random(10),
         //'created_at' => now(), optional auto completed 

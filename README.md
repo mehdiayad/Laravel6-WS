@@ -129,7 +129,6 @@
 - The setup is now completed
 
 
-
 ## DOCUMENTATION
 
 - Refer to http://localhost:8070/api/documentation for more informations (APACHE)

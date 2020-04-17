@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(false);
             $table->rememberToken();
             $table->timestamps(); // created_at & updated_at
+            $table->char('activated',1)->default('0');
             $table->char('active',1)->default('1');
         });
         

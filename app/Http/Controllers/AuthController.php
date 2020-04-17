@@ -40,16 +40,41 @@ class AuthController extends Controller
     
     public function passportAuthSimple(Request $request){
         
+        $userRepository = new UserRepository(new User);
         $credentials = $request->only('email', 'password');
         $this->response['userInformations'] =  "Connexion via Simple Authentification";
         
-        if (Auth::attempt($credentials)) {
-            $this->response['userConnected'] = true;
+        if($userRepository->existByEmail($request->email)){
+            
+            $user = $userRepository->getInformations($request->email);
+            
+            if($user->activated == 1 ){
+                
+                if (Auth::attempt($credentials)) {
+                    $this->response['userConnected'] = true;
+                }else{
+                    $this->response['userConnected'] = false;
+                    $this->response['errorCode'] = 401;
+                    $this->response['errorDescription'] = "The credentials used are incorrects";
+                    $this->response['errorType'] = "invalid_authentification";
+                }
+                
+            }else{
+                
+                // User not activated yet
+                $this->response['errorCode'] = 400;
+                $this->response['errorType'] = "unactivated_user";
+                $this->response['errorDescription'] = "User is not activated yet in the database";
+                
+            }
+                        
         }else{
-            $this->response['userConnected'] = false;
-            $this->response['errorCode'] = 401;
-            $this->response['errorDescription'] = "The credentials used are incorrects";
-            $this->response['errorType'] = "invalid_authentification";
+            
+            // Email not exist break
+            $this->response['errorCode'] = 400;
+            $this->response['errorType'] = "invalid_email";
+            $this->response['errorDescription'] = "Email used doesn't exist in the database";
+            
         }
      
         return $this->response;
@@ -67,62 +92,68 @@ class AuthController extends Controller
         if($userRepository->existByEmail($request->email)){
                         
             $user = $userRepository->getInformations($request->email);
-            $this->response['userId'] = $user->id;
-            $this->response['userName'] = $user->name;
+            
+            if($user->activated == 1){
+                
+                $this->response['userId'] = $user->id;
+                $this->response['userName'] = $user->name;
+                
+                if($this->authRepositoryInterface->countAccessTokenByUserId($user->id) >= $this->limitToken){
+                    $this->authRepositoryInterface->deleteOlderAccessTokenByUserId($user->id, $this->limitToken);
+                }
+                
+                if($this->authRepositoryInterface->countRefreshTokenByUserId($user->id) >= $this->limitToken){
+                    $this->authRepositoryInterface->deleteOlderRefreshTokenByUserId($user->id, $this->limitToken);
+                }
+                
+                $http = new Client;
+                
+                try {
                     
-            if($this->authRepositoryInterface->countAccessTokenByUserId($user->id) >= $this->limitToken){
-                $this->authRepositoryInterface->deleteOlderAccessTokenByUserId($user->id, $this->limitToken);
+                    $response = $http->post(config('services.passport.apache_oauth_token_endpoint'), [
+                        'form_params' => [
+                            'grant_type' => 'password',
+                            'client_id' => config('services.passport.apache_client_id'),
+                            'client_secret' => config('services.passport.apache_client_secret'),
+                            'username' => $request->email,
+                            'password' => $request->password,
+                        ]
+                    ]);
+                    
+                    $dataJson = $response->getBody();
+                    $dataArray = json_decode($dataJson, true);
+                    
+                    $date = new DateTime();
+                    $timestamp1 = $date->getTimestamp();
+                    $timestamp2 = (string) ((int) $timestamp1 + (int) $dataArray['expires_in']);
+                    $this->response['createdAt'] = date("Y/m/d H:i:s",$timestamp1);
+                    $this->response['expiresAt'] = date("Y/m/d H:i:s",$timestamp2);
+                    $this->response['tokenType'] = $dataArray['token_type'];
+                    $this->response['accessToken'] = $dataArray['access_token'];
+                    $this->response['refreshToken'] = $dataArray['refresh_token'];
+                    $this->response['expiresIn'] = $dataArray['expires_in'];
+                    $this->response['userConnected'] = true;
+                    
+                    
+                } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+                    
+                    // GENERAL ERROR
+                    //return response()->json('Something went wrong on the server.', $e->getCode());
+                    $dataArray = json_decode($e->getResponse()->getBody(), true);
+                    $this->response['errorCode'] = $e->getCode();
+                    $this->response['errorDescription'] = $e->getMessage();
+                    $this->response['errorType'] = $dataArray['error'];
+                }            
+                
+            }else{
+                
+                // User not activated yet
+                $this->response['errorCode'] = 400;
+                $this->response['errorType'] = "unactivated_user";
+                $this->response['errorDescription'] = "User is not activated yet in the database";
+                
             }
             
-            if($this->authRepositoryInterface->countRefreshTokenByUserId($user->id) >= $this->limitToken){
-                $this->authRepositoryInterface->deleteOlderRefreshTokenByUserId($user->id, $this->limitToken);
-            }
-
-            $http = new Client;
-            
-            
-            //$test = array();
-            //$test[1] = config('services.passport.apache_oauth_token_endpoint');
-            //$test[2] = config('services.passport.apache_client_id');
-            //$test[3] = config('services.passport.apache_client_secret');
-            //return $test;
-            
-            try {
-                
-                $response = $http->post(config('services.passport.apache_oauth_token_endpoint'), [
-                    'form_params' => [
-                        'grant_type' => 'password',
-                        'client_id' => config('services.passport.apache_client_id'),
-                        'client_secret' => config('services.passport.apache_client_secret'),
-                        'username' => $request->email,
-                        'password' => $request->password,
-                    ]
-                ]);
-                       
-                $dataJson = $response->getBody();
-                $dataArray = json_decode($dataJson, true);                
-                
-                $date = new DateTime();
-                $timestamp1 = $date->getTimestamp();
-                $timestamp2 = (string) ((int) $timestamp1 + (int) $dataArray['expires_in']);
-                $this->response['createdAt'] = date("Y/m/d H:i:s",$timestamp1);
-                $this->response['expiresAt'] = date("Y/m/d H:i:s",$timestamp2);
-                $this->response['tokenType'] = $dataArray['token_type'];
-                $this->response['accessToken'] = $dataArray['access_token'];
-                $this->response['refreshToken'] = $dataArray['refresh_token'];
-                $this->response['expiresIn'] = $dataArray['expires_in'];
-                $this->response['userConnected'] = true;
-                
-                
-            } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-                
-                // GENERAL ERROR
-                //return response()->json('Something went wrong on the server.', $e->getCode());
-                $dataArray = json_decode($e->getResponse()->getBody(), true);
-                $this->response['errorCode'] = $e->getCode();
-                $this->response['errorDescription'] = $e->getMessage();
-                $this->response['errorType'] = $dataArray['error'];
-            }            
             
         }else{
             // Email not exist break
