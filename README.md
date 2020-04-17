@@ -140,7 +140,7 @@
 
 - Generate model from database php artisan krlove:generate:model User --table-name=users
 - Generate documentation php artisan l5-swagger:generate for generate documentation
-- https://quickadminpanel.com/blog/laravel-api-documentation-with-openapiswagger/
+- Annotations : https://quickadminpanel.com/blog/laravel-api-documentation-with-openapiswagger/
 
 ## WARNING
 
