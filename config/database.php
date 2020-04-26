@@ -44,6 +44,7 @@ return [
         ],
 
         // MYSQL STAND-ALONE //
+        
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
@@ -63,6 +64,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        
         
         // MYSQL MAMP //
         /*
@@ -86,6 +88,7 @@ return [
             ]) : [],
         ],
         */
+        
 
         'pgsql' => [
             'driver' => 'pgsql',

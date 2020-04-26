@@ -271,7 +271,7 @@ class AuthController extends Controller
             $response = $this->authRepositoryInterface->getOauthClient($user->id);
             
             if($response  != null){
-                $apiUrl = config('services.passport.oauth_authorize_endpoint')."?client_id=".$response->id."&redirect_uri=".$response->redirect."&response_type=code";
+                $apiUrl = config('services.passport.apache_oauth_authorize_endpoint')."?client_id=".$response->id."&redirect_uri=".$response->redirect."&response_type=code";
                 $this->response['apiUrl'] = $apiUrl;
                 
             }else{
