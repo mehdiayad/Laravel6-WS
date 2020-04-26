@@ -52,11 +52,13 @@
 - Go to https://github.com/mehdiayad/Laravel-WS and download the project
 - Put the project in your Sites Directory (/Users/<user>/Sites/)
 
-## 2B) Setup project (Windows)
+## 2B) Setup PHP (Windows)
 
-- Go to https://github.com/mehdiayad/Laravel-WS and download the project
-- Put the project in your Sites Directory (/Users/<user>/Sites/)
-- Run php -v
+- Go to officel php download page (https://windows.php.net/download/)
+- Download the thread safe 7.3 version
+- Add php folder in your path
+- Open the terminal and run "php -v"
+- If you see php informations package, installation is completed
 - if you have an error with a dll
 - install Microsoft Vicual Studio Redistribuable package 
 - (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
@@ -86,6 +88,7 @@
 	- sudo nginx -s reload
 	
 ## 3B) Setup NGINX server (Windows)
+- To complete
 
 
 
