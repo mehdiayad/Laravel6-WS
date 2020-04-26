@@ -42,20 +42,37 @@
 - Cors Policy
 
 
-## 1) Setup project 1/2 (LARAVEL)
+## 1) Setup LARAVEL project 1/2 (Mac/Windows)
 
 - Go to https://github.com/mehdiayad/Laravel-WS and download the project
 - Put the project in your Sites Directory (/Users/<user>/Sites/)
 
-## 2A) Setup server (NGINX) Mac version
+## 2A) Setup PHP (Mac)
+
+- Go to https://github.com/mehdiayad/Laravel-WS and download the project
+- Put the project in your Sites Directory (/Users/<user>/Sites/)
+
+## 2B) Setup project (Windows)
+
+- Go to https://github.com/mehdiayad/Laravel-WS and download the project
+- Put the project in your Sites Directory (/Users/<user>/Sites/)
+- Run php -v
+- if you have an error with a dll
+- install Microsoft Vicual Studio Redistribuable package 
+- (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
+
+## 3A) Setup NGINX server (Mac)
 
 - Install brew install nginx (brew install nginx)
+- Open terminal go to the folder /Users/<user>/Sites
+- Type ls- l to display all users/groups who have access to this folder (you should see your username associated to staff group)
 - Open the conf file (/usr/local/etc/nginx/nginx.conf)
 - On the first line add user <username> staff; replace it with your name
+- Another option is to not use a specific user (by commenting the line with #) and give a read access only to user 'everyone' with option apply to all inclusive folder
 - Set listen to 8090
 - Set server_name to localhost
 - Set root to your project public directory (ex : /Users/<user>/Sites/Laravel-WS/public/)
-- Open your php-fm.conf (usr/local/etc/php/7.2/php-fpm.d/www.conf)
+- Open your php-fm config file (usr/local/etc/php/7.2/php-fpm.d/www.conf)
 - Find the line Listen (ex: listen = 127.0.0.1:9000) The address on which to accept FastCGI requests 
 - Come back to your nginx conf file
 - Set the fastcgi value to the listen value (ex : 127.0.0.1:9000)
@@ -67,33 +84,12 @@
 	- sudo nginx (start by default)
 	- sudo nginx -s stop
 	- sudo nginx -s reload
+	
+## 3B) Setup NGINX server (Windows)
 
 
-## 2B) Setup server (APACHE) Mac version
 
-- Install brew install apache (brew install httpd)
-- Open the conf file (/usr/local/etc/httpd/httpd.conf)
-- Find the line with Listen and change port to 8070
-- Find the bloc <IfModule mime_module> and add inside AddType application/x-httpd-php .php
-- Set the line with User to your User
-- Set the line with group to staff
-- Set the line with ServerName to localhost
-- Uncomment the line with LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so (add it if not exist)
-- Uncomment the line with LoadModule php7_module /usr/libexec/apache2/libphp7.so (add it if not exist)
-- Find the line with <Directory /> and set AllowOverride to All
-- Find the line with <Directory /> and set Require to all granted
-- Find the line with DocumentRoot and set your laravel public directory path
-- Just below set the Directory path to your laravel public directory path also
-- Find the line <IfModule dir_module> and add index.php
-- Go to localhost:8070
-- if you see the login page, the setup is now completed
-- For more informations see the apache conf in the docs folder 
-- Commands to remember
-	- sudo apachectl start
-	- sudo apachectl stop
-	- sudo apachectl restart
-
-## 3) Setup database (MYSQL) Mac version
+## 4) Setup MYSQL database (Mac/Windows)
 
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
 - Go through the guide install and choose a password for your user ex: user (root) password(root1234)
@@ -110,7 +106,7 @@
 - update project/config/database.php databases informations with MySQL informations connections
 - Mysql is ready to use
 
-## 4) Setup project 2/2 (LARAVEL)
+## 5) Setup LARAVEL project 2/2 (Mac/Windows)
 
 - Open the terminal and go to your project directory
 - Run the command [npm install]
@@ -131,15 +127,11 @@
 
 ## DOCUMENTATION
 
-- Refer to http://localhost:8070/api/documentation for more informations (APACHE)
 - Refer to http://localhost:8090/api/documentation for more informations (NGINX)
-
-
-## MEMO
-
 - Generate model from database php artisan krlove:generate:model User --table-name=users
 - Generate documentation php artisan l5-swagger:generate for generate documentation
 - Annotations : https://quickadminpanel.com/blog/laravel-api-documentation-with-openapiswagger/
+
 
 ## WARNING
 
