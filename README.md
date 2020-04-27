@@ -50,6 +50,8 @@
 ## 2A) Setup Composer (Mac)
 
 - Follow instructions on https://getcomposer.org/download/
+- Then install it globally (https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos)
+- Open terminal and run composer -version to verify
 
 
 ## 2B) Setup Composer (Windows)
@@ -57,6 +59,7 @@
 - Go to https://getcomposer.org/doc/00-intro.md#installation-windows 
 - Doanload the .exe file
 - Installer composer for all users
+- Open terminal and run composer -version to verify
 
 
 ## 3A) Setup PHP (Mac)
@@ -102,14 +105,34 @@
 - Download Nginx stable version (http://nginx.org/en/download.html)
 - nginx/Windows-1.18.0
 - Unzip in your env folder (c:/env)
-- Create a start bach file in Nginx folder like this()
-- Create a stop bach file in Nginx folder like this
+- Change the conf file folder by this (https://github.com/mehdiayad/Laravel-WS/blob/master/docs/nginx/nginx-windows.conf)
+- Create a start batch file in Nginx folder like this (https://github.com/mehdiayad/Laravel-WS/blob/master/docs/nginx/start.bat)
+- Create a stop batch file in Nginx folder like this (https://github.com/mehdiayad/Laravel-WS/blob/master/docs/nginx/stop.bat)
 
 
 
-## 5) Setup MYSQL database (Mac/Windows)
+## 5A) Setup MYSQL database (Mac)
 
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
+- Choose mac platform
+- Go through the guide install and choose a password for your user ex: user (root) password(root1234)
+- once installation finished open the terminal and enter mysql -u root -p
+- Enter the password
+- you should see 'Welcome to the MySQL monitor'
+- if you use Mysql8 type ALTER USER root@localhost identified with mysql_native_password by 'root1234'; for make it compatible with laravel
+- enter CREATE DATABASE laravel;
+- enter SHOW DATABASES; and verify if laravel is in the result
+- Download mysqlworkbench from official website
+- Launch the instal then from the dashboard connect the the instance with 3306 port
+- clic on server status then memorize the setup (host/port/socket)
+- update project/.env databases informations with MySQL informations connections
+- update project/config/database.php databases informations with MySQL informations connections
+- Mysql is ready to use
+
+## 5B) Setup MYSQL database (Windows)
+
+- Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
+- Choose windows platform
 - Go through the guide install and choose a password for your user ex: user (root) password(root1234)
 - once installation finished open the terminal and enter mysql -u root -p
 - Enter the password
