@@ -71,14 +71,14 @@
 
 ## 3B) Setup PHP (Windows)
 
-- Go to officel php download page (https://windows.php.net/download/)
+- Go to the official php download page (https://windows.php.net/download/)
 - Download the thread safe 7.3 version
 - Add php folder in your path
 - Open the terminal and run "php -v"
 - If you see php informations package, installation is completed
 - if you have an error with a dll
-- install Microsoft Vicual Studio Redistribuable package 
-- (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
+- install Microsoft Visual Studio Redistribuable package (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
+- Open php.in in php folder and uncomment the line with (extension=pdo_mysql)
 
 ## 4A) Setup NGINX server (Mac)
 
@@ -105,6 +105,7 @@
 	- sudo nginx -s reload
 	
 ## 4B) Setup NGINX server (Windows)
+
 - Download Nginx stable version (http://nginx.org/en/download.html)
 - nginx/Windows-1.18.0
 - Unzip in your env folder (c:/env)
