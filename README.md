@@ -153,18 +153,18 @@
 - update project/config/database.php databases informations with MySQL informations connections
 - Mysql is ready to use
 
-## 6A) Setup npm (Mac)
+## 6A) Setup nodejs/npm (Mac)
 
-- Open the terminal and go to your project directory
-- Run the command [npm install]
-- Run the command [npm run dev]
+- Download node.js from offcial website (https://nodejs.org/en/download/)
+- choose mac platform
+- open terminal and run node -version and npm -version to verify
 
 
-## 6B) Setup npm (Windows)
+## 6B) Setup nodejs/npm (Windows)
 
-- Open the terminal and go to your project directory
-- Run the command [npm install]
-- Run the command [npm run dev]
+- Download node.js from offcial website (https://nodejs.org/en/download/)
+- choose windows platform
+- open terminal and run node -version and npm -version to verify
 
 
 ## 7) Setup LARAVEL project (Mac/Windows)
