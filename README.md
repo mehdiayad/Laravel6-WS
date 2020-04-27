@@ -113,16 +113,15 @@
 - Create a stop batch file in Nginx folder like this (https://github.com/mehdiayad/Laravel-WS/blob/master/docs/nginx/stop.bat)
 
 
-
 ## 5A) Setup MYSQL database (Mac)
 
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
 - Choose mac platform
-- Go through the guide install and choose a password for your user ex: user (root) password(root1234)
+- Go through the guide install and choose a password for your user ex: user (root) password(root)
 - once installation finished open the terminal and enter mysql -u root -p
 - Enter the password
 - you should see 'Welcome to the MySQL monitor'
-- if you use Mysql8 type ALTER USER root@localhost identified with mysql_native_password by 'root1234'; for make it compatible with laravel
+- if you use Mysql8 type ALTER USER root@localhost identified with mysql_native_password by 'root'; for make it compatible with laravel
 - enter CREATE DATABASE laravel;
 - enter SHOW DATABASES; and verify if laravel is in the result
 - Download mysqlworkbench from official website
@@ -140,11 +139,11 @@
 - Install python Windows x86-64 MSI installer (https://www.python.org/downloads/windows/)
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
 - Choose windows platform
-- Go through the guide install and choose a password for your user ex: user (root) password(root1234)
+- Go through the guide install and choose a password for your user ex: user (root) password(root)
 - once installation finished open the terminal and enter mysql -u root -p
 - Enter the password
 - you should see 'Welcome to the MySQL monitor'
-- if you use Mysql8 type ALTER USER root@localhost identified with mysql_native_password by 'root1234'; for make it compatible with laravel
+- if you use Mysql8 type ALTER USER root@localhost identified with mysql_native_password by 'root'; for make it compatible with laravel
 - enter CREATE DATABASE laravel;
 - enter SHOW DATABASES; and verify if laravel is in the result
 - Download mysqlworkbench from official website
@@ -154,7 +153,22 @@
 - update project/config/database.php databases informations with MySQL informations connections
 - Mysql is ready to use
 
-## 6) Setup LARAVEL project (Mac/Windows)
+## 6A) Setup npm (Mac)
+
+- Open the terminal and go to your project directory
+- Run the command [npm install]
+- Run the command [npm run dev]
+
+
+
+## 6B) Setup npm (Windows)
+
+- Open the terminal and go to your project directory
+- Run the command [npm install]
+- Run the command [npm run dev]
+
+
+## 7) Setup LARAVEL project (Mac/Windows)
 
 - Open the terminal and go to your project directory
 - Run the command [npm install]
