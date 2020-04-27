@@ -61,8 +61,7 @@
 
 ## 3A) Setup PHP (Mac)
 
-- Go to https://github.com/mehdiayad/Laravel-WS and download the project
-- Put the project in your Sites Directory (/Users/<user>/Sites/)
+- TO DO
 
 ## 3B) Setup PHP (Windows)
 
@@ -100,7 +99,11 @@
 	- sudo nginx -s reload
 	
 ## 4B) Setup NGINX server (Windows)
-- To complete
+- Download Nginx stable version (http://nginx.org/en/download.html)
+- nginx/Windows-1.18.0
+- Unzip in your env folder (c:/env)
+- Create a start bach file in Nginx folder like this()
+- Create a stop bach file in Nginx folder like this
 
 
 
