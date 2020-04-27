@@ -42,24 +42,29 @@
 - Cors Policy
 
 
-## 1) Download LARAVEL project (Mac/Windows)
+## 1A) Download LARAVEL project (Mac)
 
 - Go to https://github.com/mehdiayad/Laravel-WS and download the project
 - Put the project in your web Directory (/Users/<user>/web/)
 
+## 1B) Download LARAVEL project (Windows)
+
+- Go to https://github.com/mehdiayad/Laravel-WS and download the project
+- Put the project in your web Directory (C:/env/web/)
+
 ## 2A) Setup Composer (Mac)
 
-- Follow instructions on https://getcomposer.org/download/
+- Follow instructions on (https://getcomposer.org/download/)
 - Then install it globally (https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos)
-- Open terminal and run composer -version to verify
+- Open terminal and run composer --version to verify
 
 
 ## 2B) Setup Composer (Windows)
 
-- Go to https://getcomposer.org/doc/00-intro.md#installation-windows 
+- Go to (https://getcomposer.org/doc/00-intro.md#installation-windows)
 - Doanload the .exe file
 - Installer composer for all users
-- Open terminal and run composer -version to verify
+- Open terminal and run composer --version to verify
 
 
 ## 3A) Setup PHP (Mac)
