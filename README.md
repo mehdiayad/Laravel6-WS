@@ -137,7 +137,7 @@
 - Mysql need Visual Studio as python as post-installation
 - Install visual studio entreprise edition (https://visualstudio.microsoft.com/fr/vs/) 
 - During installation, add the package (web developpement and ASP.net)
-- Install python here (https://www.python.org/downloads/)
+- Install python Windows x86-64 MSI installer (https://www.python.org/downloads/windows/)
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
 - Choose windows platform
 - Go through the guide install and choose a password for your user ex: user (root) password(root1234)
