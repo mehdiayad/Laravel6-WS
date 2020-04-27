@@ -9,11 +9,11 @@
 
 ## Project requirements
 
-- Apache Server
 - Browser : Chrome / Mozilla
 - Composer
 - Nginx server
 - MySQL server
+- PHP
 
 
 ## Project components version
@@ -134,9 +134,10 @@
 
 ## 5B) Setup MYSQL database (Windows)
 
-- Mysql need Bisual Studio for installation so first
+- Mysql need Visual Studio as python as post-installation
 - Install visual studio entreprise edition (https://visualstudio.microsoft.com/fr/vs/) 
 - During installation, add the package (web developpement and ASP.net)
+- Install python here (https://www.python.org/downloads/)
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
 - Choose windows platform
 - Go through the guide install and choose a password for your user ex: user (root) password(root1234)
