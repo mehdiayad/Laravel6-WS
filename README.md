@@ -42,17 +42,17 @@
 - Cors Policy
 
 
-## 1) Setup LARAVEL project 1/2 (Mac/Windows)
+## 1) Donwload LARAVEL project (Mac/Windows)
 
 - Go to https://github.com/mehdiayad/Laravel-WS and download the project
 - Put the project in your Sites Directory (/Users/<user>/Sites/)
 
-## 2A) Setup PHP (Mac)
+## 2A) Setup Composer (Mac)
 
 - Go to https://github.com/mehdiayad/Laravel-WS and download the project
 - Put the project in your Sites Directory (/Users/<user>/Sites/)
 
-## 2B) Setup PHP (Windows)
+## 2B) Setup Composer (Windows)
 
 - Go to officel php download page (https://windows.php.net/download/)
 - Download the thread safe 7.3 version
@@ -63,7 +63,23 @@
 - install Microsoft Vicual Studio Redistribuable package 
 - (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
 
-## 3A) Setup NGINX server (Mac)
+## 3A) Setup PHP (Mac)
+
+- Go to https://github.com/mehdiayad/Laravel-WS and download the project
+- Put the project in your Sites Directory (/Users/<user>/Sites/)
+
+## 3B) Setup PHP (Windows)
+
+- Go to officel php download page (https://windows.php.net/download/)
+- Download the thread safe 7.3 version
+- Add php folder in your path
+- Open the terminal and run "php -v"
+- If you see php informations package, installation is completed
+- if you have an error with a dll
+- install Microsoft Vicual Studio Redistribuable package 
+- (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
+
+## 4A) Setup NGINX server (Mac)
 
 - Install brew install nginx (brew install nginx)
 - Open terminal go to the folder /Users/<user>/Sites
@@ -87,12 +103,12 @@
 	- sudo nginx -s stop
 	- sudo nginx -s reload
 	
-## 3B) Setup NGINX server (Windows)
+## 4B) Setup NGINX server (Windows)
 - To complete
 
 
 
-## 4) Setup MYSQL database (Mac/Windows)
+## 5) Setup MYSQL database (Mac/Windows)
 
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
 - Go through the guide install and choose a password for your user ex: user (root) password(root1234)
@@ -109,7 +125,7 @@
 - update project/config/database.php databases informations with MySQL informations connections
 - Mysql is ready to use
 
-## 5) Setup LARAVEL project 2/2 (Mac/Windows)
+## 6) Setup LARAVEL project (Mac/Windows)
 
 - Open the terminal and go to your project directory
 - Run the command [npm install]
