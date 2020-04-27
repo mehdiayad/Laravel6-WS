@@ -7,15 +7,13 @@
 - Communicate with the frontend
 
 
-## Project Version
-
-- Version : 1.0.0-SNAPSHOT
-
-
 ## Project requirements
 
 - Apache Server
 - Browser : Chrome / Mozilla
+- Composer
+- Nginx server
+- MySQL server
 
 
 ## Project components version
@@ -136,6 +134,9 @@
 
 ## 5B) Setup MYSQL database (Windows)
 
+- Mysql need Bisual Studio for installation so first
+- Install visual studio entreprise edition (https://visualstudio.microsoft.com/fr/vs/) 
+- During installation, add the package (web developpement and ASP.net)
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
 - Choose windows platform
 - Go through the guide install and choose a password for your user ex: user (root) password(root1234)
