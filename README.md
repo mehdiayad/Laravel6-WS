@@ -160,7 +160,6 @@
 - Run the command [npm run dev]
 
 
-
 ## 6B) Setup npm (Windows)
 
 - Open the terminal and go to your project directory
