@@ -42,26 +42,22 @@
 - Cors Policy
 
 
-## 1) Donwload LARAVEL project (Mac/Windows)
+## 1) Download LARAVEL project (Mac/Windows)
 
 - Go to https://github.com/mehdiayad/Laravel-WS and download the project
-- Put the project in your Sites Directory (/Users/<user>/Sites/)
+- Put the project in your web Directory (/Users/<user>/web/)
 
 ## 2A) Setup Composer (Mac)
 
-- Go to https://github.com/mehdiayad/Laravel-WS and download the project
-- Put the project in your Sites Directory (/Users/<user>/Sites/)
+- Follow instructions on https://getcomposer.org/download/
+
 
 ## 2B) Setup Composer (Windows)
 
-- Go to officel php download page (https://windows.php.net/download/)
-- Download the thread safe 7.3 version
-- Add php folder in your path
-- Open the terminal and run "php -v"
-- If you see php informations package, installation is completed
-- if you have an error with a dll
-- install Microsoft Vicual Studio Redistribuable package 
-- (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
+- Go to https://getcomposer.org/doc/00-intro.md#installation-windows 
+- Doanload the .exe file
+- Installer composer for all users
+
 
 ## 3A) Setup PHP (Mac)
 
