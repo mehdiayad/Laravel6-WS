@@ -199,4 +199,7 @@
 
 - Because the laravel build-in server in singlethread, if you run this application with php artisan serve, the front API won't be able to connect through this API. You must use a multi-thread server (APACHE or NGINX)
 
+## OPTIONNAL
+
+- Install git
 
