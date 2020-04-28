@@ -14,7 +14,7 @@
 - Nginx server
 - MySQL server
 - PHP
-
+- Node Server
 
 ## Project components version
 
@@ -134,10 +134,9 @@
 
 ## 5B) Setup MYSQL database (Windows)
 
+- Mysql need the framework .NET 4 installed first
+- Go to (https://www.microsoft.com/fr-fr/download/details.aspx?id=17851)
 - Mysql need Visual Studio as python as post-installation
-- Install visual studio entreprise edition (https://visualstudio.microsoft.com/fr/vs/) 
-- During installation, add the package (web developpement and ASP.net)
-- Install python Windows x86-64 MSI installer (https://www.python.org/downloads/windows/)
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
 - Choose windows platform
 - Go through the guide install and choose a password for your user ex: user (root) password(root)
@@ -202,4 +201,7 @@
 ## OPTIONNAL
 
 - Install git
+- install jdk
+- install eclipse php
+- install insomnia
 
