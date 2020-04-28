@@ -112,6 +112,9 @@
 - Change the conf file folder by this (https://github.com/mehdiayad/Laravel-WS/blob/master/docs/nginx/nginx-windows.conf)
 - Create a start batch file in Nginx folder like this (https://github.com/mehdiayad/Laravel-WS/blob/master/docs/nginx/start.bat)
 - Create a stop batch file in Nginx folder like this (https://github.com/mehdiayad/Laravel-WS/blob/master/docs/nginx/stop.bat)
+- Commands to remember
+	- to start nginx run the start.bat file
+	- to stop nginx run the stop.bat file
 
 
 ## 5A) Setup MYSQL database (Mac)
@@ -182,8 +185,14 @@
 - Copy the secret of the Laravel Password Grant Client
 - Paste the secret of the env.file of the project (PASSPORT_CLIENT_SECRET=XXXX)
 - You should see the login page authentification
-- You can connect to the app with (email:super@gmail.com / password:super)
 - The setup is now completed
+
+
+## Identification
+
+- To connect through the API, you can use theses credentials
+- email: super@gmail.com
+- password: super
 
 
 ## DOCUMENTATION
