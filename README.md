@@ -43,7 +43,7 @@
 ## 1A) Download LARAVEL project (Mac)
 
 - Go to https://github.com/mehdiayad/Laravel-WS and download the project
-- Put the project in your web Directory (/Users/<user>/web/)
+- Put the project in your web Directory (/Users/username/web/)
 
 ## 1B) Download LARAVEL project (Windows)
 
