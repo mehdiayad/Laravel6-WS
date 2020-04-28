@@ -156,18 +156,17 @@
 - update project/config/database.php databases informations with MySQL informations connections
 - Mysql is ready to use
 
-## 6A) Setup nodejs/npm (Mac)
+## 6A) Setup eclipse php (Mac)
 
-- Download node.js from offcial website (https://nodejs.org/en/download/)
-- choose mac platform
-- open terminal and run node -version and npm -version to verify
+- Eclipse need jdk so first download it (https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+- Download eclipse installer (https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2020-03/R/eclipse-inst-win64.exe)
+- Install eclipse php
 
+## 6B) Setup eclipse php (Mac)
 
-## 6B) Setup nodejs/npm (Windows)
-
-- Download node.js from offcial website (https://nodejs.org/en/download/)
-- choose windows platform
-- open terminal and run node -version and npm -version to verify
+- Eclipse need jdk so first download it (https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+- Download eclipse installer (https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2020-03/R/eclipse-inst-win64.exe)
+- Install eclipse php
 
 
 ## 7) Setup LARAVEL project (Mac/Windows)
@@ -210,7 +209,6 @@
 ## OPTIONNAL
 
 - Install git
-- install jdk
-- install eclipse php
 - install insomnia
+- install nodejs (for vue.js)
 
