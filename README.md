@@ -13,17 +13,8 @@
 - Composer
 - Nginx server
 - MySQL server
-- PHP
+- PHP 7.2
 - Node Server
-
-## Project components version
-
-- Laravel 6.0
-- PHP : 7.2
-- Passport : 8.4
-- FruitCake : 1.0
-- Swagger : 6.0
-- Eloquent Model Generator : 1.3
 
 ## Project concepts used
 - Laravel Authentification 
@@ -67,14 +58,15 @@
 
 ## 3A) Setup PHP (Mac)
 
-- TO DO
+- Doanload homebrew with offical instructions (https://brew.sh/index_fr)
+- open the terminal and enter (brew install php72)
 
 ## 3B) Setup PHP (Windows)
 
 - Go to the official php download page (https://windows.php.net/download/)
-- Download the thread safe 7.3 version
+- Download the thread safe 7.2 version
 - Add php folder in your path
-- Open the terminal and run "php -v"
+- Open the terminal and run "php -v" and verify version is 7.2
 - If you see php informations package, installation is completed
 - if you have an error with a dll
 - install Microsoft Visual Studio Redistribuable package (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
@@ -83,14 +75,14 @@
 ## 4A) Setup NGINX server (Mac)
 
 - Install brew install nginx (brew install nginx)
-- Open terminal go to the folder /Users/<user>/Sites
+- Open terminal go to the folder /Users/<user>/web
 - Type ls- l to display all users/groups who have access to this folder (you should see your username associated to staff group)
 - Open the conf file (/usr/local/etc/nginx/nginx.conf)
 - On the first line add user <username> staff; replace it with your name
 - Another option is to not use a specific user (by commenting the line with #) and give a read access only to user 'everyone' with option apply to all inclusive folder
 - Set listen to 8090
 - Set server_name to localhost
-- Set root to your project public directory (ex : /Users/<user>/Sites/Laravel-WS/public/)
+- Set root to your project public directory (ex : /Users/<user>/web/Laravel-WS/public/)
 - Open your php-fm config file (usr/local/etc/php/7.2/php-fpm.d/www.conf)
 - Find the line Listen (ex: listen = 127.0.0.1:9000) The address on which to accept FastCGI requests 
 - Come back to your nginx conf file
@@ -139,9 +131,8 @@
 
 - Mysql need the framework .NET 4 installed first
 - Go to (https://www.microsoft.com/fr-fr/download/details.aspx?id=17851)
-- Mysql need Visual Studio as python as post-installation
 - Install mysql from official website (https://dev.mysql.com/downloads/mysql/)
-- Choose windows platform
+- Choose windows platform and choose custom install only insstall mysql server and mysql workbench
 - Go through the guide install and choose a password for your user ex: user (root) password(root)
 - once installation finished open the terminal and enter mysql -u root -p
 - Enter the password
@@ -150,7 +141,7 @@
 - enter CREATE DATABASE laravel;
 - enter SHOW DATABASES; and verify if laravel is in the result
 - Download mysqlworkbench from official website
-- Launch the instal then from the dashboard connect the the instance with 3306 port
+- Launch the instal then from the dashboard connect to the instance with 3306 port
 - clic on server status then memorize the setup (host/port/socket)
 - update project/.env databases informations with MySQL informations connections
 - update project/config/database.php databases informations with MySQL informations connections
@@ -194,7 +185,7 @@
 - password: super
 
 
-## DOCUMENTATION
+## Documentation
 
 - Refer to http://localhost:8090/api/documentation for more informations (NGINX)
 - Generate model from database php artisan krlove:generate:model User --table-name=users
@@ -202,11 +193,11 @@
 - Annotations : https://quickadminpanel.com/blog/laravel-api-documentation-with-openapiswagger/
 
 
-## WARNING
+## Warning
 
 - Because the laravel build-in server in singlethread, if you run this application with php artisan serve, the front API won't be able to connect through this API. You must use a multi-thread server (APACHE or NGINX)
 
-## OPTIONNAL
+## Optional
 
 - Install git
 - install insomnia
