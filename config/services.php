@@ -35,10 +35,10 @@ return [
         'mamp_oauth_authorize_endpoint' => env('MAMP_PASSPORT_OAUTH_AUTHORIZE_ENDPOINT'),
         'mamp_client_secret' => env('MAMP_PASSPORT_CLIENT_SECRET'),
         'mamp_client_id' => env('MAMP_PASSPORT_CLIENT_ID'),
-        'apache_oauth_token_endpoint' => env('APACHE_PASSPORT_OAUTH_TOKEN_ENDPOINT'),
-        'apache_oauth_authorize_endpoint' => env('APACHE_PASSPORT_OAUTH_AUTHORIZE_ENDPOINT'),
-        'apache_client_secret' => env('APACHE_PASSPORT_CLIENT_SECRET'),
-        'apache_client_id' => env('APACHE_PASSPORT_CLIENT_ID'),
+        'nginx_oauth_token_endpoint' => env('NGINX_PASSPORT_OAUTH_TOKEN_ENDPOINT'),
+        'nginx_oauth_authorize_endpoint' => env('NGINX_PASSPORT_OAUTH_AUTHORIZE_ENDPOINT'),
+        'nginx_client_secret' => env('NGINX_PASSPORT_CLIENT_SECRET'),
+        'nginx_client_id' => env('NGINX_PASSPORT_CLIENT_ID'),
     ],
 
 ];

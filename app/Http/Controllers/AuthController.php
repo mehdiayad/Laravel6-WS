@@ -110,11 +110,11 @@ class AuthController extends Controller
                 
                 try {
                     
-                    $response = $http->post(config('services.passport.apache_oauth_token_endpoint'), [
+                    $response = $http->post(config('services.passport.nginx_oauth_token_endpoint'), [
                         'form_params' => [
                             'grant_type' => 'password',
-                            'client_id' => config('services.passport.apache_client_id'),
-                            'client_secret' => config('services.passport.apache_client_secret'),
+                            'client_id' => config('services.passport.nginx_client_id'),
+                            'client_secret' => config('services.passport.nginx_client_secret'),
                             'username' => $request->email,
                             'password' => $request->password,
                         ]
@@ -204,7 +204,7 @@ class AuthController extends Controller
                 
                 try {
                     
-                    $response = $http->post(config('services.passport.apache_oauth_token_endpoint'), [
+                    $response = $http->post(config('services.passport.nginx_oauth_token_endpoint'), [
                         'form_params' => [
                             'grant_type' => 'authorization_code',
                             'client_id' => $clientId,
@@ -271,7 +271,7 @@ class AuthController extends Controller
             $response = $this->authRepositoryInterface->getOauthClient($user->id);
             
             if($response  != null){
-                $apiUrl = config('services.passport.apache_oauth_authorize_endpoint')."?client_id=".$response->id."&redirect_uri=".$response->redirect."&response_type=code";
+                $apiUrl = config('services.passport.nginx_oauth_authorize_endpoint')."?client_id=".$response->id."&redirect_uri=".$response->redirect."&response_type=code";
                 $this->response['apiUrl'] = $apiUrl;
                 
             }else{
