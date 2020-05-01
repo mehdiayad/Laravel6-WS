@@ -71,7 +71,7 @@
 - if you have an error with a dll
 - install Microsoft Visual Studio Redistribuable package (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
 - Open php.in in php folder and uncomment the line with (extension=pdo_mysql)
-- [OPTIONAL] Set the extension_dir to your ext directory (c:/env/php-7.2.30-ts/ext)
+- Set the extension_dir to your ext directory (c:/env/php-7.2.30-ts/ext)
 
 ## 4A) Setup Apache server (Mac)
 
@@ -83,16 +83,16 @@
 - Unzip and place it in the env folder (c:/env/apache24)
 - Open httpd.conf
 - Change SRVRoot to c:/env/apache24
-- Change Listen to 8090
 - uncomment rewrite_module module
 - Add this line LoadModule php7_module “C:/env/php-7.2-ts/php7apache2_4.dll”
 - Add this line AddHandler application/x-httpd-php .php
 - Add this line PHPIniDir “C:/env/php-7.2-ts/
 - Change ServerName to localhost
-- Change DocumentRoot to public laravel folder
+- Change DocumentRoot to public web folder
 - Inside this section, set AllowOverride to All
 - Inside this section, set Require All granted
 - Add in DirectoryIndex index.php
+- Uncomment include vhosts.conf
 	
 	
 ## 5A) Setup NGINX server (Mac)
