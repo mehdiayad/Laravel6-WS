@@ -71,8 +71,31 @@
 - if you have an error with a dll
 - install Microsoft Visual Studio Redistribuable package (https://support.microsoft.com/fr-fr/help/2977003/the-latest-supported-visual-c-downloads)
 - Open php.in in php folder and uncomment the line with (extension=pdo_mysql)
+- [OPTIONAL] Set the extension_dir to your ext directory (c:/env/php-7.2.30-ts/ext)
 
-## 4A) Setup NGINX server (Mac)
+## 4A) Setup Apache server (Mac)
+
+- TO COMPLETE
+	
+## 4B) Setup Apache server (Windows)
+
+- Doanload apache code (https://www.apachelounge.com/download/)
+- Unzip and place it in the env folder (c:/env/apache24)
+- Open httpd.conf
+- Change SRVRoot to c:/env/apache24
+- Change Listen to 8090
+- uncomment rewrite_module module
+- Add this line LoadModule php7_module “C:/env/php-7.2-ts/php7apache2_4.dll”
+- Add this line AddHandler application/x-httpd-php .php
+- Add this line PHPIniDir “C:/env/php-7.2-ts/
+- Change ServerName to localhost
+- Change DocumentRoot to public laravel folder
+- Inside this section, set AllowOverride to All
+- Inside this section, set Require All granted
+- Add in DirectoryIndex index.php
+	
+	
+## 5A) Setup NGINX server (Mac)
 
 - Install brew install nginx (brew install nginx)
 - Open terminal go to the folder /Users/<user>/web
@@ -96,7 +119,7 @@
 	- sudo nginx -s stop
 	- sudo nginx -s reload
 	
-## 4B) Setup NGINX server (Windows)
+## 5B) Setup NGINX server (Windows)
 
 - Download Nginx stable version (http://nginx.org/en/download.html)
 - nginx/Windows-1.18.0
@@ -107,6 +130,8 @@
 - Commands to remember
 	- to start nginx run the start.bat file
 	- to stop nginx run the stop.bat file
+	
+	
 
 
 ## 5A) Setup MYSQL database (Mac)
