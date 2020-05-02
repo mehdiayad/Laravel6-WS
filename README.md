@@ -93,6 +93,15 @@
 - Inside this section, set Require All granted
 - Add in DirectoryIndex index.php
 - Uncomment include vhosts.conf
+- go to bin directory
+	- run httpd.exe to start
+	- run cmd+c to stop
+	
+- Run httpd.exe -k "install" -n "Apache Server"
+- Go to Administrative tools and select services
+- Select Apache Server and check the path to executable
+- clic right and start the service
+- clic left and stop the service
 	
 	
 ## 5A) Setup NGINX server (Mac)
