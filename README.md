@@ -83,20 +83,40 @@
 - Unzip and place it in the env folder (c:/env/apache24)
 - Open httpd.conf
 - Change SRVRoot to c:/env/apache24
+- Find listen: 80 and add this line
+	Listen 8090
+	Listen 8091
 - uncomment rewrite_module module
-- Add this line LoadModule php7_module “C:/env/php-7.2-ts/php7apache2_4.dll”
-- Add this line AddHandler application/x-httpd-php .php
-- Add this line PHPIniDir “C:/env/php-7.2-ts/
+- Add this line 
+	LoadModule php7_module “C:/env/php-7.2-ts/php7apache2_4.dll”
+- Add this line
+	<FilesMatch \.php$>
+	  AddHandler application/x-httpd-php .php
+	</FilesMatch>
+- Add this line 
+	PHPIniDir “C:/env/php-7.2-ts/
 - Change ServerName to localhost
 - Change DocumentRoot to public web folder
 - Inside this section, set AllowOverride to All
 - Inside this section, set Require All granted
-- Add in DirectoryIndex index.php
+- Add in DirectoryIndex section index.php
 - Uncomment include vhosts.conf
+- Add this section inside
+	<VirtualHost localhost:8090>
+	    DocumentRoot  "C:/env/web/Laravel-WS/public"
+	    #ServerName    laravel-api.com
+	    <Directory    "C:/env/web/Laravel-WS/public">
+	      AllowOverride All
+	      Require all granted
+	    </Directory>
+	</VirtualHost>
+
+
+
 - go to bin directory
 	- run httpd.exe to start
 	- run cmd+c to stop
-	
+-
 - Run httpd.exe -k "install" -n "Apache Server"
 - Go to Administrative tools and select services
 - Select Apache Server and check the path to executable
