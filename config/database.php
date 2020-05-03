@@ -57,9 +57,9 @@ return [
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', 'root'),
             // WINDOWS STANDALONE // WINDOWS MAMP
-            //'unix_socket' => env('DB_SOCKET', 'mySQL'),
+            'unix_socket' => env('DB_SOCKET', 'mySQL'),
             // MAC STANDALONE
-            'unix_socket' => env('DB_SOCKET', '/tmp/mysql.sock'),
+            //'unix_socket' => env('DB_SOCKET', '/tmp/mysql.sock'),
             // MAC MAMP
             //'unix_socket' => env('DB_SOCKET', '/Applications/MAMP/tmp/mysql/mysql.sock'),
             'charset' => 'utf8mb4',
